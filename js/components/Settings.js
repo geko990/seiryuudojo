@@ -8,6 +8,31 @@ export default class Settings {
             <h2>Impostazioni</h2>
 
             <div class="card settings-card">
+                <h3>📲 Installa l'App</h3>
+                <p style="font-size: 0.9em; color: #555; margin-bottom: 15px;">
+                    Puoi salvare quest'app sul tuo telefono per un accesso rapido!
+                </p>
+                
+                <div style="background: #f5f5f5; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                    <strong style="color: #333;">iPhone / iPad:</strong>
+                    <ol style="font-size: 0.85em; color: #555; margin: 8px 0 0 0; padding-left: 20px;">
+                        <li>Tocca l'icona <strong>Condividi</strong> (quadrato con freccia in su)</li>
+                        <li>Scorri e tocca <strong>"Aggiungi a Home"</strong></li>
+                        <li>Conferma con <strong>"Aggiungi"</strong></li>
+                    </ol>
+                </div>
+                
+                <div style="background: #f5f5f5; padding: 12px; border-radius: 8px;">
+                    <strong style="color: #333;">Android:</strong>
+                    <ol style="font-size: 0.85em; color: #555; margin: 8px 0 0 0; padding-left: 20px;">
+                        <li>Tocca i <strong>tre puntini</strong> in alto a destra</li>
+                        <li>Tocca <strong>"Installa app"</strong> o <strong>"Aggiungi a Home"</strong></li>
+                        <li>Conferma l'installazione</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="card settings-card" style="margin-top: 20px;">
                 <h3>Info App</h3>
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                     <span>Versione:</span>
