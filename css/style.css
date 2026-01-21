@@ -194,8 +194,8 @@ body {
     padding-left: 30px;
     /* Adjusted for thinner "half" poles */
     padding-right: 30px;
-    padding-top: 90px;
-    /* Push content below the top bamboo bar */
+    padding-top: 50px;
+    /* Push content just below the top bamboo bar (bar ends at ~50px) */
     box-sizing: border-box;
     width: 100%;
     overflow-x: hidden;
