@@ -38,12 +38,19 @@ class App {
         // Initialize Bell
         this.bell.render();
 
-        // Setup "Il Dojo" Popup
+        // Setup "Il Dojo" Popup with clickable address
         document.getElementById('dojo-btn').addEventListener('click', () => {
+            const dojoAddress = 'Viale degli antichi platani, 1, Caserta';
+            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dojoAddress)}`;
+
             this.showModal(`
                 <h2>Il Dojo</h2>
                 <p><strong>Sensei:</strong> Danilo Manodoro (VI Dan)</p>
-                <p><strong>Indirizzo:</strong> Viale degli antichi platani, 1, Caserta</p>
+                <p><strong>Indirizzo:</strong> 
+                    <a href="${mapsUrl}" target="_blank" rel="noopener" style="color: #2196F3; text-decoration: underline;">
+                        ${dojoAddress}
+                    </a>
+                </p>
                 
                 <h3 style="margin-top: 20px; color: var(--accent-color);">Orari</h3>
                 <div style="font-size: 0.95em; line-height: 1.8;">
@@ -60,6 +67,33 @@ class App {
                 </div>
             `);
         });
+
+        // Notification helper functions
+        this.openNotificationPost = (index) => {
+            this.closeModal();
+            // Open the post detail
+            if (window._seiryuuPosts && window._seiryuuPosts[index]) {
+                setTimeout(() => this.showPostDetail(index), 200);
+            }
+        };
+
+        this.markNotificationRead = (postId) => {
+            const bell = this.bell;
+            if (bell) {
+                bell.markAsRead(postId);
+                bell.render(); // Re-render to update badge
+            }
+            this.closeModal();
+        };
+
+        this.markAllNotificationsRead = () => {
+            const bell = this.bell;
+            if (bell) {
+                bell.getUnreadNotifications().forEach(n => bell.markAsRead(n.id));
+                bell.render();
+            }
+            this.closeModal();
+        };
 
         // Setup Modal Close (Click Outside)
         const modalOverlay = document.getElementById('modal-overlay');
