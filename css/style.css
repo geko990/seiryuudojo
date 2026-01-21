@@ -332,7 +332,7 @@ body {
     padding: 24px;
 
     /* Top Alignment: Content starts right under bamboo pole */
-    padding-top: 50px;
+    padding-top: 35px;
 
     padding-left: 30px;
     padding-right: 30px;
@@ -342,16 +342,16 @@ body {
 
     background: transparent;
 
-    /* DISSOLVENZA (Fade Effect) - Tight fade at bamboo edges */
+    /* DISSOLVENZA (Fade Effect) - Content fades at top and bottom */
     -webkit-mask-image: linear-gradient(to bottom,
             transparent 0px,
-            black 15px,
-            black calc(100% - 100px),
+            black 25px,
+            black calc(100% - 120px),
             transparent 100%);
     mask-image: linear-gradient(to bottom,
             transparent 0px,
-            black 15px,
-            black calc(100% - 100px),
+            black 25px,
+            black calc(100% - 120px),
             transparent 100%);
 }
 
