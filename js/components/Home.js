@@ -130,6 +130,7 @@ export default class Home {
                         // H: OraInizio
                         // I: OraFine
                         // J: Quota
+                        // K: Chiusura (footer text, smaller)
 
                         return {
                             dataPubblicazione: parseSheetDate(cells[0]), // For sorting
@@ -140,7 +141,8 @@ export default class Home {
                             luogo: cells[6] ? cells[6].v : '',
                             oraInizio: cells[7] ? cells[7].v : '',
                             oraFine: cells[8] ? cells[8].v : '',
-                            quota: cells[9] ? cells[9].v : ''
+                            quota: cells[9] ? cells[9].v : '',
+                            chiusura: cells[10] ? cells[10].v : ''
                         };
                     }).filter(p => p !== null);
 
@@ -267,6 +269,11 @@ if (typeof window !== 'undefined') {
                 // Content with line breaks and clickable phone numbers
                 if (post.content) {
                     detailHtml += `<div style="line-height: 1.6; color: #333;">${formatContent(post.content)}</div>`;
+                }
+
+                // Footer/Chiusura section (smaller text)
+                if (post.chiusura) {
+                    detailHtml += `<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 0.8em; color: #666; line-height: 1.5;">${formatContent(post.chiusura)}</div>`;
                 }
 
                 this.showModal(detailHtml);
