@@ -22,6 +22,15 @@
     margin: 0;
     padding: 0;
     -webkit-tap-highlight-color: transparent;
+    /* Prevent pinch zoom */
+    touch-action: manipulation;
+}
+
+/* Prevent iOS auto-zoom on input focus (needs 16px min) */
+input,
+textarea,
+select {
+    font-size: 16px !important;
 }
 
 body {
