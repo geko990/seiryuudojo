@@ -56,22 +56,20 @@ export default class Settings {
             const versionNumber = div.querySelector('#version-number');
             const updateBtn = div.querySelector('#update-app-btn');
 
-            // VERSION CLICK - Clear Cache
+            // VERSION CLICK - Clear Cache (no confirmation)
             if (versionNumber) {
                 versionNumber.addEventListener('click', async () => {
-                    if (confirm('Vuoi cancellare la cache e forzare il ricaricamento?')) {
-                        try {
-                            if ('serviceWorker' in navigator) {
-                                const registrations = await navigator.serviceWorker.getRegistrations();
-                                for (let reg of registrations) await reg.unregister();
-                                const keys = await caches.keys();
-                                for (let key of keys) await caches.delete(key);
-                            }
-                            window.location.reload(true);
-                        } catch (e) {
-                            console.error('Cache clear failed:', e);
-                            window.location.reload(true);
+                    try {
+                        if ('serviceWorker' in navigator) {
+                            const registrations = await navigator.serviceWorker.getRegistrations();
+                            for (let reg of registrations) await reg.unregister();
+                            const keys = await caches.keys();
+                            for (let key of keys) await caches.delete(key);
                         }
+                        window.location.reload(true);
+                    } catch (e) {
+                        console.error('Cache clear failed:', e);
+                        window.location.reload(true);
                     }
                 });
             }
