@@ -331,8 +331,8 @@ body {
     overflow-y: auto;
     padding: 24px;
 
-    /* Top Alignment: Content starts right under header (60px) */
-    padding-top: 60px;
+    /* Top Alignment: Content starts right under bamboo pole */
+    padding-top: 50px;
 
     padding-left: 30px;
     padding-right: 30px;
@@ -342,16 +342,16 @@ body {
 
     background: transparent;
 
-    /* DISSOLVENZA (Fade Effect) - Content fades at top and bottom */
+    /* DISSOLVENZA (Fade Effect) - Tight fade at bamboo edges */
     -webkit-mask-image: linear-gradient(to bottom,
             transparent 0px,
-            black 25px,
-            black calc(100% - 120px),
+            black 15px,
+            black calc(100% - 100px),
             transparent 100%);
     mask-image: linear-gradient(to bottom,
             transparent 0px,
-            black 25px,
-            black calc(100% - 120px),
+            black 15px,
+            black calc(100% - 100px),
             transparent 100%);
 }
 
