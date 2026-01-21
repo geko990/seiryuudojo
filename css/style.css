@@ -196,6 +196,8 @@ body {
     padding-right: 30px;
     padding-top: 50px;
     /* Push content just below the top bamboo bar (bar ends at ~50px) */
+    padding-bottom: 95px;
+    /* Push content above the floating nav bar */
     box-sizing: border-box;
     width: 100%;
     overflow-x: hidden;
