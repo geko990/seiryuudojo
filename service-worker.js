@@ -1,47 +1,67 @@
-const CACHE_NAME = 'seiryuu-v2';
+// CACHE VERSION - Update this to force cache refresh!
+const CACHE_VERSION = '0.5.36';
+const CACHE_NAME = `seiryuu-${CACHE_VERSION}`;
+
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
-    './css/style.css',
-    './js/app.js',
-    './js/router.js',
-    './js/components/Home.js',
-    './js/components/Info.js',
-    './js/components/Study.js',
-    './js/components/Bell.js',
-    './data/curriculum.json',
+    './manifest.json',
     './assets/kamiza_bg.png',
     './assets/icon-192.png',
     './assets/icon-512.png'
 ];
 
+// Install - cache core assets
 self.addEventListener('install', (event) => {
+    console.log('SW: Installing version', CACHE_VERSION);
+    self.skipWaiting(); // Activate immediately
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log('SW: Caching assets');
             return cache.addAll(ASSETS_TO_CACHE);
         })
     );
 });
 
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request).then((fetchRes) => {
-                // Dynamic caching for new requests could go here
-                return fetchRes;
-            });
-        })
-    );
-});
-
+// Activate - clean up old caches
 self.addEventListener('activate', (event) => {
-    // Cleanup old caches
+    console.log('SW: Activating version', CACHE_VERSION);
     event.waitUntil(
         caches.keys().then(keys => Promise.all(
             keys.map(key => {
-                if (key !== CACHE_NAME) return caches.delete(key);
+                if (key !== CACHE_NAME) {
+                    console.log('SW: Deleting old cache', key);
+                    return caches.delete(key);
+                }
             })
-        ))
+        )).then(() => self.clients.claim()) // Take control immediately
+    );
+});
+
+// Fetch - Network first for JS/CSS, cache first for images
+self.addEventListener('fetch', (event) => {
+    const url = new URL(event.request.url);
+
+    // For JS and CSS files - always try network first
+    if (url.pathname.endsWith('.js') || url.pathname.endsWith('.css')) {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    // Cache the fresh response
+                    const responseClone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(event.request, responseClone);
+                    });
+                    return response;
+                })
+                .catch(() => caches.match(event.request)) // Fallback to cache if offline
+        );
+        return;
+    }
+
+    // For other assets - cache first (images, etc)
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            return response || fetch(event.request);
+        })
     );
 });
