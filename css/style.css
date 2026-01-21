@@ -191,9 +191,9 @@ body {
 
 /* Inscribe content */
 #app {
-    padding-left: 15px;
-    /* Reduced for wider content */
-    padding-right: 15px;
+    padding-left: 20px;
+    /* Balance between breathing room and content width */
+    padding-right: 20px;
     padding-top: 50px;
     /* Push content just below the top bamboo bar (bar ends at ~50px) */
     padding-bottom: 95px;
@@ -345,8 +345,8 @@ body {
     /* Top Alignment: Content starts right under bamboo pole */
     padding-top: 10px;
 
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 
     /* Bottom Alignment: Content ends BEFORE the nav bar */
     padding-bottom: 120px;
@@ -507,14 +507,14 @@ h3 {
     padding: 30px;
     border-radius: 12px;
 
-    /* STRICT WIDTH CONTROL - Wider for more content */
-    width: 90% !important;
-    max-width: 500px !important;
+    /* WIDTH - Fits within screen with margin for clickable overlay */
+    width: calc(100% - 40px);
+    max-width: 500px;
     margin: 0 auto;
 
-    /* Verticality */
-    max-height: 90vh;
-    min-height: 40vh;
+    /* HEIGHT - Always fits within viewport */
+    max-height: calc(100vh - 80px);
+    min-height: auto;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
