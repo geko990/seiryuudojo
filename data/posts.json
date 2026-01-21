@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "Benvenuti al Seiryuu Dojo",
+        "date": "2023-10-01",
+        "category": "info",
+        "content": "Siamo felici di annunciare l'apertura del nuovo sito web. Qui troverete tutte le informazioni sui corsi e gli eventi.",
+        "image": "assets/icon-192.png"
+    },
+    {
+        "id": 2,
+        "title": "Seminario di Dicembre",
+        "date": "2023-12-15",
+        "category": "eventi",
+        "content": "Il maestro X terrà uno stage speciale sulle tecniche di Bukiwaza. Non mancate!",
+        "image": null
+    },
+    {
+        "id": 3,
+        "title": "Nuova Regola di Etichetta",
+        "date": "2024-01-10",
+        "category": "etichetta",
+        "content": "Si ricorda a tutti i praticanti di arrivare 15 minuti prima dell'inizio della lezione per la pulizia del Dojo.",
+        "image": null
+    },
+    {
+        "id": 4,
+        "title": "Esami Kyu",
+        "date": "2024-02-01",
+        "category": "esami",
+        "content": "La sessione invernale degli esami si terrà il 20 Febbraio. Preparatevi!",
+        "image": null
+    }
+]

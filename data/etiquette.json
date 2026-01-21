@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Entrata nel Dojo",
+        "rule": "Eseguire un saluto (Rei) verso il Kamiza quando si entra e si esce dal Dojo.",
+        "category": "Generale"
+    },
+    {
+        "title": "Inizio Lezione",
+        "rule": "Allinearsi in Seiza in ordine di grado. Attendere il Maestro in silenzio.",
+        "category": "Reiho"
+    },
+    {
+        "title": "Armi",
+        "rule": "Non passare mai sopra le armi. Trattare Bokken e Jo con rispetto.",
+        "category": "Armi"
+    },
+    {
+        "title": "Pulizia",
+        "rule": "Il Soji (pulizia del Dojo) è parte integrante della pratica.",
+        "category": "Generale"
+    }
+]

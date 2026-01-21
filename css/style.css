@@ -1,0 +1,596 @@
+:root {
+    --primary-color: #262626;
+    /* Deep Charcoal */
+    --accent-color: #C6A664;
+    /* Bamboo/Bronze Gold */
+    --accent-glow: rgba(198, 166, 100, 0.4);
+    --bg-glass-strong: rgba(255, 255, 255, 0.90);
+    --text-main: #1a1a1a;
+    --text-muted: #555;
+    --font-heading: 'Noto Serif JP', serif;
+    --font-body: 'Inter', sans-serif;
+    --nav-height: 80px;
+    --header-height: 70px;
+    /* Taller for the bamboo top */
+    --border-radius: 16px;
+    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --border-glass: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+/* Frame Layout Refactor */
+#app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Zen Garden Background (Behind everything) */
+#bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: url('../assets/zen_garden_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px) brightness(1.2) opacity(0.6);
+    /* Increased blur and reduced opacity */
+}
+
+/* Bamboo Frame - Assembled from pieces */
+#app::before,
+#app::after {
+    display: none;
+    /* Disable old frame */
+}
+
+/* Common Bamboo Style - Organic Texture v3 (Balanced) */
+.bamboo-frame-part {
+    position: fixed;
+    /* Z-Index Strategy: 
+       Side bamboo (5000) 
+       Top Bamboo (5010) - Sits ON TOP of sides
+       Header Content (6000) - Sits ON TOP of everything
+    */
+    z-index: 5000;
+    pointer-events: none;
+
+    /* Base Color + Softer Grain Texture */
+    background-color: #dcb36b;
+    background-image:
+        repeating-linear-gradient(90deg,
+            transparent 0,
+            rgba(60, 40, 20, 0.08) 1px,
+            transparent 3px),
+        linear-gradient(to right,
+            #5d4037 0%,
+            #8d6e63 15%,
+            rgba(255, 255, 255, 0.15) 40%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.15) 60%,
+            #8d6e63 85%,
+            #5d4037 100%);
+
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 1px;
+    border: 1px solid rgba(60, 40, 20, 0.3);
+}
+
+/* Vertical Nodes (Joints) - Softer */
+.bamboo-frame-part::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            transparent 0,
+            transparent 170px,
+            rgba(60, 30, 10, 0.4) 170px,
+            rgba(60, 30, 10, 0.3) 172px,
+            rgba(255, 230, 180, 0.3) 172px,
+            rgba(255, 230, 180, 0.2) 174px,
+            transparent 174px);
+}
+
+.bamboo-left {
+    position: fixed;
+    top: -20px;
+    bottom: -20px;
+    left: -20px;
+    width: 45px;
+}
+
+.bamboo-right {
+    position: fixed;
+    top: -20px;
+    bottom: -20px;
+    right: -20px;
+    width: 45px;
+}
+
+/* Top Bar: The Header Container */
+.bamboo-top {
+    display: block !important;
+    position: fixed;
+    /* 1/3 Off Screen Logic: Height 75px, Top -25px -> Visible 50px */
+    top: -25px;
+    left: -10px;
+    /* Slight overhang to cover corners */
+    right: -10px;
+    width: calc(100% + 20px);
+    height: 75px;
+
+    /* Horizontal Grain for Horizontal Pole */
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent 0,
+            rgba(60, 40, 20, 0.08) 1px,
+            transparent 3px),
+        linear-gradient(to bottom,
+            #5d4037 0%,
+            #8d6e63 15%,
+            rgba(255, 255, 255, 0.15) 35%,
+            #dcb36b 50%,
+            #8d6e63 85%,
+            #5d4037 100%) !important;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 5010;
+    /* Behind Header Content (Header will be 6000) */
+}
+
+/* Horizontal Joints */
+.bamboo-top::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg,
+            transparent 0,
+            transparent 200px,
+            rgba(60, 30, 10, 0.4) 200px,
+            rgba(60, 30, 10, 0.3) 203px,
+            rgba(255, 230, 180, 0.0) 203px,
+            /* Removed top highlight to avoid clash with header text */
+            rgba(255, 230, 180, 0.0) 205px,
+            transparent 205px) !important;
+}
+
+/* Inscribe content */
+#app {
+    padding-left: 30px;
+    /* Adjusted for thinner "half" poles */
+    padding-right: 30px;
+    padding-top: 90px;
+    /* Push content below the top bamboo bar */
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Hide top for a cleaner open-sky look? Or keep previous horizontal? 
+   User said "bamboo ai bordi fatti male". 
+   I will remove the top one for a moment to see if "verticals only" looks cleaner (very Japanese gate style)
+   OR I use the previous horizontal one but blended better.
+   Let's try Verticals ONLY for now, it's elegant.
+*/
+/* Header Content - FORCE VISIBILITY */
+#top-header {
+    position: fixed;
+    z-index: 6000 !important;
+    /* Must be above bamboo (5010) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    /* Visible area of top bamboo */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    /* Debug/Safety */
+    pointer-events: auto;
+    /* Buttons need to be clickable */
+    background: transparent !important;
+}
+
+.header-btn,
+.header-title {
+    position: relative;
+    z-index: 6001;
+    color: #3e2723 !important;
+    /* Dark Brown for contrast against light wood */
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+    /* Etched effect */
+}
+
+/* Bamboo Joint Caps - The "Notch" Look */
+.bamboo-joint-cap {
+    position: fixed;
+    z-index: 5020;
+    /* Above Top Poly (5010) */
+    top: -5px;
+    /* Slightly above viewport to look like top of pole */
+    width: 45px;
+    /* Match side pole width */
+    height: 35px;
+    /* Enough to overlap slightly */
+    border-radius: 4px 4px 15px 15px;
+    /* Rounded bottom to "cup" the horizontal pole */
+    pointer-events: none;
+
+    /* Matches vertical pole texture perfectly */
+    background-color: #dcb36b;
+    background-image:
+        repeating-linear-gradient(90deg,
+            transparent 0,
+            rgba(60, 40, 20, 0.08) 1px,
+            transparent 3px),
+        linear-gradient(to right,
+            #5d4037 0%,
+            #8d6e63 15%,
+            rgba(255, 255, 255, 0.15) 40%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.15) 60%,
+            #8d6e63 85%,
+            #5d4037 100%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* Shadow ONTO the horizontal pole */
+    border: 1px solid rgba(60, 40, 20, 0.3);
+}
+
+.cap-left {
+    left: -20px;
+    /* Align with bamboo-left */
+}
+
+.cap-right {
+    right: -20px;
+    /* Align with bamboo-right */
+}
+
+/* Add a visual "cut" circle to simulate the curve of the horizontal pole sitting in it */
+.bamboo-joint-cap::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    /* Overlap downwards */
+    left: 10%;
+    width: 80%;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(at top, rgba(0, 0, 0, 0.3), transparent 70%);
+}
+
+.header-btn {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    border: 2px solid var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    /* Re-enable clicks specifically for buttons */
+    transition: transform 0.2s;
+}
+
+.header-btn:active {
+    transform: scale(0.95);
+}
+
+/* Bell Icon */
+.bell-container {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.bell-container svg {
+    fill: var(--accent-color);
+    width: 24px;
+    height: 24px;
+}
+
+/* Main Content */
+#main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+
+    /* Top Alignment: Content starts right under header (60px) */
+    padding-top: 60px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+    /* Bottom Alignment: Content ends BEFORE the nav bar */
+    padding-bottom: 120px;
+
+    background: transparent;
+
+    /* DISSOLVENZA (Fade Effect) - Content fades at top and bottom */
+    -webkit-mask-image: linear-gradient(to bottom,
+            transparent 0px,
+            black 25px,
+            black calc(100% - 120px),
+            transparent 100%);
+    mask-image: linear-gradient(to bottom,
+            transparent 0px,
+            black 25px,
+            black calc(100% - 120px),
+            transparent 100%);
+}
+
+/* Cards */
+.card {
+    background: var(--bg-glass-strong);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--border-glass);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.kanji-title {
+    font-size: 3.5rem;
+    color: #222;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.romaji-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Nav Bar */
+#bottom-nav {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    height: 70px;
+    background: rgba(20, 20, 20, 0.85);
+    /* Much darker for premium look */
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it's above everything */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 10px;
+}
+
+.nav-btn {
+    border: none;
+    background: none;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+/* Central Home Button - Floating Circle */
+.nav-btn[data-target="home"] {
+    background: var(--accent-color);
+    color: #fff !important;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: relative;
+    top: -25px;
+    /* Floating up */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+    /* Fixed size */
+}
+
+.nav-btn[data-target="home"]::after {
+    content: 'Home';
+    font-size: 0.7rem;
+    margin-top: 5px;
+    display: none;
+    /* Keep it clean? Or show text? */
+}
+
+.nav-btn.active:not([data-target="home"]) {
+    color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.nav-btn[data-target="home"].active {
+    transform: scale(1.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Modals */
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    /* Top Layer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#modal-overlay.hidden {
+    display: none;
+}
+
+#modal-content {
+    /* LIGHT OPAQUE BACKGROUND for readability */
+    background: #fcfbf9;
+    color: #222;
+    padding: 30px;
+    border-radius: 12px;
+
+    /* STRICT WIDTH CONTROL */
+    width: 75% !important;
+    max-width: 400px !important;
+    margin: 0 auto;
+
+    /* Verticality */
+    max-height: 90vh;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Helpers */
+.hidden {
+    display: none !important;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.home-grid,
+.exams-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.home-card,
+.exam-card {
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.filter-chips {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.technique-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exam-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.tags-container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.tag {
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}

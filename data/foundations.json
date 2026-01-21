@@ -1,0 +1,52 @@
+{
+    "taisabaki": [
+        {
+            "name": "Irimi",
+            "description": "Entrata diretta (corpo che entra)."
+        },
+        {
+            "name": "Tenkan",
+            "description": "Rotazione (corpo che ruota)."
+        },
+        {
+            "name": "Irimi-Tenkan",
+            "description": "Combinazione di entrata e rotazione."
+        },
+        {
+            "name": "Tenshin",
+            "description": "Schivata e riposizionamento."
+        }
+    ],
+    "ashisabaki": [
+        {
+            "name": "Ayumi-ashi",
+            "description": "Passo alternato (camminata naturale)."
+        },
+        {
+            "name": "Tsugi-ashi",
+            "description": "Passo scivolato (il piede posteriore non supera l'anteriore)."
+        },
+        {
+            "name": "Okuri-ashi",
+            "description": "Passo di accompagnamento."
+        }
+    ],
+    "kamae": [
+        {
+            "name": "Migi Hanmi",
+            "description": "Guardia destra."
+        },
+        {
+            "name": "Hidari Hanmi",
+            "description": "Guardia sinistra."
+        },
+        {
+            "name": "Ai Hanmi",
+            "description": "Guardia corrispondente."
+        },
+        {
+            "name": "Gyaku Hanmi",
+            "description": "Guardia opposta."
+        }
+    ]
+}

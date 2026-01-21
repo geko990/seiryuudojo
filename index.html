@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seiryuu Dojo</title>
+    <meta name="description" content="App ufficiale del Seiryuu Dojo Aikido">
+    <link rel="stylesheet" href="css/style.css?v=0.5.27">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;600&display=swap"
+        rel="stylesheet">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" href="assets/icon-192.png">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Bamboo Frame Elements -->
+        <div class="bamboo-frame-part bamboo-top"></div>
+        <div class="bamboo-frame-part bamboo-left"></div>
+        <div class="bamboo-frame-part bamboo-right"></div>
+        <!-- Joint Caps (The "Notch" Effect) -->
+        <div class="bamboo-joint-cap cap-left"></div>
+        <div class="bamboo-joint-cap cap-right"></div>
+        <!-- Joint Caps (The "Notch" Effect) -->
+        <div class="bamboo-joint-cap cap-left"></div>
+        <div class="bamboo-joint-cap cap-right"></div>
+
+        <!-- Background Layer -->
+        <div id="bg-layer"></div>
+
+        <!-- Top Header -->
+        <header id="top-header">
+            <button id="dojo-btn" class="header-btn">Il Dojo</button>
+            <div class="header-title">清流道場</div>
+            <div id="notification-bell" class="header-btn bell-container">
+                <!-- SVG Icon injected by JS -->
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Dynamic Content Loaded Here -->
+        </main>
+
+        <!-- Global Modal Container -->
+        <div id="modal-overlay" class="hidden">
+            <div id="modal-content" class="card">
+                <!-- Modal Dynamic Content -->
+            </div>
+        </div>
+
+        <!-- Navigation Bar (5 Tabs) -->
+        <nav id="bottom-nav">
+            <button class="nav-btn" data-target="exams">Esami</button>
+            <button class="nav-btn" data-target="search">Ricerca</button>
+            <button class="nav-btn active" data-target="home">Home</button>
+            <button class="nav-btn" data-target="glossary">Glossario</button>
+            <button class="nav-btn" data-target="settings">Impostazioni</button>
+        </nav>
+    </div>
+
+    <!-- Force clear Service Worker cache -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                registrations.forEach(reg => reg.unregister());
+            });
+            caches.keys().then(names => {
+                names.forEach(name => caches.delete(name));
+            });
+        }
+    </script>
+    <script type="module" src="js/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => console.log('SW registered!', reg))
+                    .catch(err => console.log('SW registration failed', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

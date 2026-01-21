@@ -1,0 +1,145 @@
+[
+    {
+        "id": "ikkyo-aihanmi-omote",
+        "name": "Ikkyo (Omote)",
+        "attack": "Katatetori Aihanmi",
+        "exam": "6 Dan",
+        "category": "Tachiwaza",
+        "description": "Primo principio. Controllo del braccio e squilibrio (versione frontale).",
+        "tags": [
+            "ikkyo",
+            "aihanmi",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "ikkyo-aihanmi-ura",
+        "name": "Ikkyo (Ura)",
+        "attack": "Katatetori Aihanmi",
+        "exam": "6 Kyu",
+        "category": "Tachiwaza",
+        "description": "Primo principio. Controllo del braccio e squilibrio (versione in rotazione).",
+        "tags": [
+            "ikkyo",
+            "aihanmi",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "shihonage-aihanmi-omote",
+        "name": "Shihonage (Omote)",
+        "attack": "Katatetori Aihanmi",
+        "exam": "6 Kyu",
+        "category": "Tachiwaza",
+        "description": "Proiezione nelle quattro direzioni.",
+        "tags": [
+            "shihonage",
+            "aihanmi",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "shihonage-aihanmi-ura",
+        "name": "Shihonage (Ura)",
+        "attack": "Katatetori Aihanmi",
+        "exam": "6 Kyu",
+        "category": "Tachiwaza",
+        "description": "Proiezione nelle quattro direzioni.",
+        "tags": [
+            "shihonage",
+            "aihanmi",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "iriminage-aihanmi",
+        "name": "Iriminage",
+        "attack": "Katatetori Aihanmi",
+        "exam": "5 Kyu",
+        "category": "Tachiwaza",
+        "description": "Proiezione entrando nel corpo dell'avversario.",
+        "tags": [
+            "iriminage",
+            "aihanmi",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "kotegaeshi-aihanmi",
+        "name": "Kotegaeshi",
+        "attack": "Katatetori Aihanmi",
+        "exam": "5 Kyu",
+        "category": "Tachiwaza",
+        "description": "Torsione del polso.",
+        "tags": [
+            "kotegaeshi",
+            "aihanmi",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "nikyo-ryotetori-omote",
+        "name": "Nikyo (Omote)",
+        "attack": "Ryotetori",
+        "exam": "3 Kyu",
+        "category": "Tachiwaza",
+        "description": "Secondo principio. Leva sul polso.",
+        "tags": [
+            "nikyo",
+            "ryotetori",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "sankyo-ryotetori-omote",
+        "name": "Sankyo (Omote)",
+        "attack": "Ryotetori",
+        "exam": "3 Kyu",
+        "category": "Tachiwaza",
+        "description": "Terzo principio. Leva a spirale.",
+        "tags": [
+            "sankyo",
+            "ryotetori",
+            "tachiwaza"
+        ]
+    },
+    {
+        "id": "suwariwaza-shoumenuchi-ikkyo-omote",
+        "name": "Ikkyo (Omote)",
+        "attack": "Shomenuchi",
+        "exam": "2 Kyu",
+        "category": "Suwariwaza",
+        "description": "Ikkyo in ginocchio.",
+        "tags": [
+            "ikkyo",
+            "shomenuchi",
+            "suwariwaza"
+        ]
+    },
+    {
+        "id": "kumitachi-1",
+        "name": "Ichi no Tachi",
+        "attack": "Kumi Tachi",
+        "exam": "1 Dan",
+        "category": "Bukiwaza",
+        "description": "Primo Kumi Tachi.",
+        "tags": [
+            "bokken",
+            "kumitachi",
+            "bukiwaza"
+        ]
+    },
+    {
+        "id": "kumijo-1",
+        "name": "Kumi Jo 1",
+        "attack": "Kumi Jo",
+        "exam": "1 Dan",
+        "category": "Bukiwaza",
+        "description": "Primo Kumi Jo.",
+        "tags": [
+            "jo",
+            "kumijo",
+            "bukiwaza"
+        ]
+    }
+]
