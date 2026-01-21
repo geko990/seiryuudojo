@@ -69,11 +69,14 @@ class App {
         });
 
         // Notification helper functions
-        this.openNotificationPost = (index) => {
+        this.openNotificationPost = (postId) => {
             this.closeModal();
-            // Open the post detail
-            if (window._seiryuuPosts && window._seiryuuPosts[index]) {
-                setTimeout(() => this.showPostDetail(index), 200);
+            // Find the post by ID in window._seiryuuPosts
+            if (window._seiryuuPosts) {
+                const index = window._seiryuuPosts.findIndex(p => p.id === postId);
+                if (index !== -1) {
+                    setTimeout(() => this.showPostDetail(index), 200);
+                }
             }
         };
 

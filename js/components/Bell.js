@@ -97,8 +97,8 @@ export default class Bell {
             let listHtml = '';
             if (unread.length > 0) {
                 listHtml = unread.map(n => `
-                    <div class="notification-item" data-id="${n.id}" data-index="${n.index}" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 12px; margin-bottom: 10px; background: #f9f9f9; border-radius: 8px; cursor: pointer; border-left: 3px solid var(--accent-color);">
-                        <div style="flex: 1;" onclick="window.seiryuuApp.openNotificationPost(${n.index})">
+                    <div class="notification-item" data-id="${n.id}" style="display: flex; justify-content: space-between; align-items: flex-start; padding: 12px; margin-bottom: 10px; background: #f9f9f9; border-radius: 8px; cursor: pointer; border-left: 3px solid var(--accent-color);">
+                        <div style="flex: 1;" onclick="window.seiryuuApp.openNotificationPost('${n.id}')">
                             <strong style="color: #333; font-size: 0.95em;">${n.title}</strong>
                             <p style="color: #666; font-size: 0.8em; margin-top: 4px;">${n.content ? n.content.substring(0, 60) + '...' : ''}</p>
                         </div>

@@ -132,9 +132,15 @@ export default class Home {
                         // J: Quota
                         // K: Chiusura (footer text, smaller)
 
+                        // Create unique ID for matching with notifications
+                        const title = cells[1] ? cells[1].v : '';
+                        const dateRaw = cells[0] ? cells[0].v : '';
+                        const postId = `${title}_${dateRaw}`.replace(/\s/g, '_');
+
                         return {
+                            id: postId,
                             dataPubblicazione: parseSheetDate(cells[0]), // For sorting
-                            title: cells[1] ? cells[1].v : '',
+                            title: title,
                             category: cells[2] ? (cells[2].v || 'news') : 'news',
                             content: cells[3] ? cells[3].v : '',
                             dataEvento: parseSheetDate(cells[5]),  // For display
