@@ -191,9 +191,9 @@ body {
 
 /* Inscribe content */
 #app {
-    padding-left: 30px;
-    /* Adjusted for thinner "half" poles */
-    padding-right: 30px;
+    padding-left: 15px;
+    /* Reduced for wider content */
+    padding-right: 15px;
     padding-top: 50px;
     /* Push content just below the top bamboo bar (bar ends at ~50px) */
     padding-bottom: 95px;
@@ -345,8 +345,8 @@ body {
     /* Top Alignment: Content starts right under bamboo pole */
     padding-top: 10px;
 
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
 
     /* Bottom Alignment: Content ends BEFORE the nav bar */
     padding-bottom: 120px;
@@ -507,9 +507,9 @@ h3 {
     padding: 30px;
     border-radius: 12px;
 
-    /* STRICT WIDTH CONTROL */
-    width: 75% !important;
-    max-width: 400px !important;
+    /* STRICT WIDTH CONTROL - Wider for more content */
+    width: 90% !important;
+    max-width: 500px !important;
     margin: 0 auto;
 
     /* Verticality */
