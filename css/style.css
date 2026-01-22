@@ -513,8 +513,8 @@ h3 {
     max-width: 500px;
     margin: 0 auto;
 
-    /* HEIGHT - Always fits within viewport */
-    max-height: calc(100vh - 80px);
+    /* HEIGHT - Fits above nav bar with breathing room */
+    max-height: calc(100vh - 180px);
     min-height: auto;
     display: flex;
     flex-direction: column;
@@ -539,6 +539,8 @@ h3 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+    max-width: 320px;
+    margin: 0 auto;
 }
 
 .home-card,
