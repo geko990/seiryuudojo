@@ -489,8 +489,8 @@ h3 {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
-    z-index: 1000;
-    /* Top Layer */
+    z-index: 2000;
+    /* Above nav bar (1000) but below bamboo (5000) */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -513,8 +513,8 @@ h3 {
     max-width: 500px;
     margin: 0 auto;
 
-    /* HEIGHT - Fits above nav bar with breathing room */
-    max-height: calc(100vh - 180px);
+    /* HEIGHT - Modal above nav bar, can use more space */
+    max-height: calc(100vh - 120px);
     min-height: auto;
     display: flex;
     flex-direction: column;
