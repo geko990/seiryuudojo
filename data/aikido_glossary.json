@@ -1,0 +1,806 @@
+{
+    "techniques": [
+        {
+            "id": "ikkyo",
+            "name": "Ikkyō",
+            "romaji": "Ikkyo",
+            "category": "tecnica",
+            "type": "immobilizzazione",
+            "description": "Prima tecnica di controllo. Controllo del braccio dell'avversario portando pressione sul gomito e sul polso, conducendolo a terra per l'immobilizzazione.",
+            "spiritual": "Rappresenta il primo passo nella Via. Insegna il principio fondamentale di estendere il ki e guidare il partner.",
+            "exam_appearances": [
+                {
+                    "exam": "6° Kyu",
+                    "attacks": [
+                        "Katatetori aihanmi"
+                    ]
+                },
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Katatetori",
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Shōmenuchi",
+                        "Yokomenuchi"
+                    ]
+                },
+                {
+                    "exam": "3° Kyu",
+                    "attacks": [
+                        "Ryōtetori",
+                        "Ushiro ryōtedori"
+                    ]
+                },
+                {
+                    "exam": "2° Kyu",
+                    "attacks": [
+                        "Ushiro kubishime"
+                    ]
+                },
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Tutte le prese"
+                    ]
+                },
+                {
+                    "exam": "1° Dan",
+                    "attacks": [
+                        "Jiyūwaza"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "nikyo",
+            "name": "Nikyō",
+            "romaji": "Nikyo",
+            "category": "tecnica",
+            "type": "immobilizzazione",
+            "description": "Seconda tecnica di controllo. Applicazione di torsione sul polso che causa dolore e controlla il centro dell'avversario.",
+            "spiritual": "Insegna la sensibilità e il controllo attraverso punti di pressione. Il dolore come maestro.",
+            "exam_appearances": [
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Shōmenuchi",
+                        "Katatori"
+                    ]
+                },
+                {
+                    "exam": "3° Kyu",
+                    "attacks": [
+                        "Ryōtetori",
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "2° Kyu",
+                    "attacks": [
+                        "Yokomenuchi",
+                        "Ushiro"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "sankyo",
+            "name": "Sankyō",
+            "romaji": "Sankyo",
+            "category": "tecnica",
+            "type": "immobilizzazione",
+            "description": "Terza tecnica di controllo. Torsione del polso e dell'avambraccio che permette di condurre l'avversario a terra.",
+            "spiritual": "Controllo a spirale, come il movimento dell'universo.",
+            "exam_appearances": [
+                {
+                    "exam": "6° Kyu",
+                    "attacks": [
+                        "Katatetori aihanmi (uchikaitensankyo)"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "3° Kyu",
+                    "attacks": [
+                        "Ryōtetori",
+                        "Shōmenuchi",
+                        "Katatori"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "yonkyo",
+            "name": "Yonkyō",
+            "romaji": "Yonkyo",
+            "category": "tecnica",
+            "type": "immobilizzazione",
+            "description": "Quarta tecnica di controllo. Pressione su un punto nervoso dell'avambraccio che causa intenso dolore.",
+            "spiritual": "La precisione genera il controllo. Un punto, infinite possibilità.",
+            "exam_appearances": [
+                {
+                    "exam": "2° Kyu",
+                    "attacks": [
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Katatori",
+                        "Shōmenuchi",
+                        "Yokomenuchi"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "gokyo",
+            "name": "Gokyō",
+            "romaji": "Gokyo",
+            "category": "tecnica",
+            "type": "immobilizzazione",
+            "description": "Quinta tecnica di controllo. Variante di ikkyō utilizzata principalmente per disarmare l'avversario armato di coltello.",
+            "spiritual": "Adattamento al pericolo. La stessa forma, un'intenzione diversa.",
+            "exam_appearances": [
+                {
+                    "exam": "2° Kyu",
+                    "attacks": [
+                        "Yokomenuchi"
+                    ]
+                },
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Tantōtori"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "shihonage",
+            "name": "Shihōnage",
+            "romaji": "Shihonage",
+            "category": "tecnica",
+            "type": "proiezione",
+            "description": "Proiezione nelle quattro direzioni. Tecnica fondamentale dove si guida il braccio dell'avversario sopra la sua testa causando una caduta all'indietro.",
+            "spiritual": "Le quattro direzioni rappresentano tutti i punti dello spazio. Dominare lo spazio intorno a sé.",
+            "exam_appearances": [
+                {
+                    "exam": "6° Kyu",
+                    "attacks": [
+                        "Katatetori aihanmi"
+                    ]
+                },
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Katatetori"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Yokomenuchi"
+                    ]
+                },
+                {
+                    "exam": "3° Kyu",
+                    "attacks": [
+                        "Yokomenuchi"
+                    ]
+                },
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Tutte le prese"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "iriminage",
+            "name": "Iriminage",
+            "romaji": "Iriminage",
+            "category": "tecnica",
+            "type": "proiezione",
+            "description": "Proiezione entrante. Si entra nella guardia dell'avversario guidandolo in una spirale verso il basso.",
+            "spiritual": "Irimi - entrare - è il cuore dell'Aikido. Non evitare il conflitto, ma trasformarlo.",
+            "exam_appearances": [
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Katatetori"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Yokomenuchi"
+                    ]
+                },
+                {
+                    "exam": "3° Kyu",
+                    "attacks": [
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "2° Kyu",
+                    "attacks": [
+                        "Hanmihantachiwaza"
+                    ]
+                },
+                {
+                    "exam": "1° Dan",
+                    "attacks": [
+                        "Jiyūwaza",
+                        "Randori"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "kotegaeshi",
+            "name": "Kotegaeshi",
+            "romaji": "Kotegaeshi",
+            "category": "tecnica",
+            "type": "proiezione",
+            "description": "Rovesciamento del polso. Tecnica di proiezione dove si applica torsione esterna al polso causando la caduta dell'avversario.",
+            "spiritual": "Piccoli movimenti, grandi effetti. Il polso guida tutto il corpo.",
+            "exam_appearances": [
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Shōmenuchi"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Katatetori gyakuhanmi"
+                    ]
+                },
+                {
+                    "exam": "3° Kyu",
+                    "attacks": [
+                        "Yokomenuchi"
+                    ]
+                },
+                {
+                    "exam": "2° Kyu",
+                    "attacks": [
+                        "Hanmihantachiwaza"
+                    ]
+                },
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Tantōtori"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "tenchinage",
+            "name": "Tenchinage",
+            "romaji": "Tenchinage",
+            "category": "tecnica",
+            "type": "proiezione",
+            "description": "Proiezione cielo-terra. Una mano sale verso il cielo, l'altra scende verso la terra, dividendo l'equilibrio dell'avversario.",
+            "spiritual": "Unione di opposti: cielo e terra, yin e yang. L'armonia nasce dal contrasto.",
+            "exam_appearances": [
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Katatetori"
+                    ]
+                },
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Ryōtetori"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "udekimenage",
+            "name": "Udekimenage",
+            "romaji": "Udekimenage",
+            "category": "tecnica",
+            "type": "proiezione",
+            "description": "Proiezione con leva sul braccio. Si porta pressione sul gomito dell'avversario mentre si guida la sua caduta.",
+            "spiritual": "La forza dell'avversario diventa la sua debolezza.",
+            "exam_appearances": [
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Katatetori (irimi/tenkan)"
+                    ]
+                },
+                {
+                    "exam": "4° Kyu",
+                    "attacks": [
+                        "Katatetori"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "kokyunage",
+            "name": "Kokyūnage",
+            "romaji": "Kokyunage",
+            "category": "tecnica",
+            "type": "proiezione",
+            "description": "Proiezione di respirazione. Famiglia di tecniche che utilizzano il timing e il ki piuttosto che leve articolari.",
+            "spiritual": "La tecnica senza forma. Pura espressione del ki e del timing.",
+            "exam_appearances": [
+                {
+                    "exam": "1° Kyu",
+                    "attacks": [
+                        "Varie"
+                    ]
+                },
+                {
+                    "exam": "1° Dan",
+                    "attacks": [
+                        "Jiyūwaza"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "kokyuho",
+            "name": "Kokyūhō",
+            "romaji": "Kokyuho",
+            "category": "tecnica",
+            "type": "esercizio",
+            "description": "Esercizio di respirazione praticato in suwariwaza. Fondamentale per sviluppare il ki e il centro.",
+            "spiritual": "L'essenza dell'Aikido. Prima del movimento c'è il respiro, prima del respiro c'è l'intenzione.",
+            "exam_appearances": [
+                {
+                    "exam": "6° Kyu",
+                    "attacks": [
+                        "Ryōtetori"
+                    ]
+                },
+                {
+                    "exam": "5° Kyu",
+                    "attacks": [
+                        "Ryōtetori"
+                    ]
+                },
+                {
+                    "exam": "1° Dan",
+                    "attacks": [
+                        "Variazioni avanzate"
+                    ]
+                }
+            ]
+        }
+    ],
+    "attacks": [
+        {
+            "id": "katatetori",
+            "name": "Katatetori",
+            "romaji": "Katatetori",
+            "category": "attacco",
+            "type": "presa",
+            "description": "Presa al polso con una mano. Attacco fondamentale per lo studio delle tecniche base.",
+            "variants": [
+                "Aihanmi (stesso lato)",
+                "Gyakuhanmi (lato opposto)"
+            ]
+        },
+        {
+            "id": "ryotetori",
+            "name": "Ryōtetori",
+            "romaji": "Ryotetori",
+            "category": "attacco",
+            "type": "presa",
+            "description": "Presa ad entrambi i polsi. Richiede gestione di due punti di contatto.",
+            "variants": []
+        },
+        {
+            "id": "morotetori",
+            "name": "Morōtetori",
+            "romaji": "Morotetori",
+            "category": "attacco",
+            "type": "presa",
+            "description": "Presa con entrambe le mani su un braccio. Attacco che blocca fortemente un arto.",
+            "variants": []
+        },
+        {
+            "id": "katatori",
+            "name": "Katatori",
+            "romaji": "Katatori",
+            "category": "attacco",
+            "type": "presa",
+            "description": "Presa alla spalla. Afferrare il gi all'altezza della spalla.",
+            "variants": [
+                "Menuchi (seguito da colpo alla testa)"
+            ]
+        },
+        {
+            "id": "shomenuchi",
+            "name": "Shōmenuchi",
+            "romaji": "Shomenuchi",
+            "category": "attacco",
+            "type": "colpo",
+            "description": "Colpo frontale verticale alla testa. Simula un fendente di spada dall'alto.",
+            "spiritual": "Il taglio che divide cielo e terra. Movimento primordiale."
+        },
+        {
+            "id": "yokomenuchi",
+            "name": "Yokomenuchi",
+            "romaji": "Yokomenuchi",
+            "category": "attacco",
+            "type": "colpo",
+            "description": "Colpo laterale alla tempia. Simula un fendente diagonale di spada.",
+            "spiritual": "Il taglio che viene dall'ombra. Richiede percezione periferica."
+        },
+        {
+            "id": "tsuki",
+            "name": "Tsuki",
+            "romaji": "Tsuki",
+            "category": "attacco",
+            "type": "colpo",
+            "description": "Colpo diretto, pugno o affondo con arma. Attacco lineare al centro del corpo.",
+            "variants": [
+                "Chūdan (medio)",
+                "Jōdan (alto)",
+                "Gedan (basso)"
+            ]
+        },
+        {
+            "id": "ushiro",
+            "name": "Ushiro",
+            "romaji": "Ushiro",
+            "category": "attacco",
+            "type": "presa",
+            "description": "Attacchi da dietro. Include prese ai polsi, spalle, o strangolamento.",
+            "variants": [
+                "Ryōtedori",
+                "Ryōkatadori",
+                "Kubishime"
+            ]
+        }
+    ],
+    "terminology": [
+        {
+            "id": "dojo",
+            "name": "Dōjō",
+            "romaji": "Dojo",
+            "category": "terminologia",
+            "type": "luogo",
+            "description": "Letteralmente 'luogo della Via'. Lo spazio sacro dove si pratica l'arte marziale.",
+            "kanji": "道場"
+        },
+        {
+            "id": "sensei",
+            "name": "Sensei",
+            "romaji": "Sensei",
+            "category": "terminologia",
+            "type": "titolo",
+            "description": "Letteralmente 'nato prima'. Titolo di rispetto per il maestro o l'insegnante.",
+            "kanji": "先生"
+        },
+        {
+            "id": "uke",
+            "name": "Uke",
+            "romaji": "Uke",
+            "category": "terminologia",
+            "type": "ruolo",
+            "description": "Colui che attacca e riceve la tecnica. Ruolo fondamentale nell'apprendimento.",
+            "kanji": "受け"
+        },
+        {
+            "id": "tori",
+            "name": "Tori",
+            "romaji": "Tori",
+            "category": "terminologia",
+            "type": "ruolo",
+            "description": "Colui che esegue la tecnica. Anche chiamato Nage (colui che proietta).",
+            "kanji": "取り"
+        },
+        {
+            "id": "nage",
+            "name": "Nage",
+            "romaji": "Nage",
+            "category": "terminologia",
+            "type": "ruolo",
+            "description": "Colui che proietta. Sinonimo di Tori, enfatizza l'aspetto della proiezione.",
+            "kanji": "投げ"
+        },
+        {
+            "id": "kamiza",
+            "name": "Kamiza",
+            "romaji": "Kamiza",
+            "category": "terminologia",
+            "type": "luogo",
+            "description": "Il posto d'onore nel dojo, dove siede il maestro e sono esposti simboli sacri.",
+            "kanji": "上座"
+        },
+        {
+            "id": "rei",
+            "name": "Rei",
+            "romaji": "Rei",
+            "category": "terminologia",
+            "type": "etichetta",
+            "description": "Il saluto. Inchino formale che esprime rispetto e gratitudine.",
+            "kanji": "礼"
+        },
+        {
+            "id": "onegaishimasu",
+            "name": "Onegaishimasu",
+            "romaji": "Onegaishimasu",
+            "category": "terminologia",
+            "type": "espressione",
+            "description": "Espressione di cortesia che significa 'per favore praticate con me' o 'vi prego'.",
+            "kanji": "お願いします"
+        },
+        {
+            "id": "arigatogozaimashita",
+            "name": "Arigatō Gozaimashita",
+            "romaji": "Arigato Gozaimashita",
+            "category": "terminologia",
+            "type": "espressione",
+            "description": "Ringraziamento formale. Si usa alla fine della pratica.",
+            "kanji": "ありがとうございました"
+        },
+        {
+            "id": "suwariwaza",
+            "name": "Suwariwaza",
+            "romaji": "Suwariwaza",
+            "category": "terminologia",
+            "type": "posizione",
+            "description": "Tecniche eseguite in ginocchio. Sia uke che tori sono in seiza.",
+            "kanji": "座り技"
+        },
+        {
+            "id": "tachiwaza",
+            "name": "Tachiwaza",
+            "romaji": "Tachiwaza",
+            "category": "terminologia",
+            "type": "posizione",
+            "description": "Tecniche eseguite in piedi. La forma più comune di pratica.",
+            "kanji": "立ち技"
+        },
+        {
+            "id": "hanmihantachiwaza",
+            "name": "Hanmi-hantachiwaza",
+            "romaji": "Hanmi-hantachiwaza",
+            "category": "terminologia",
+            "type": "posizione",
+            "description": "Tori in ginocchio, uke in piedi. Simula difesa da posizione di svantaggio.",
+            "kanji": "半身半立ち技"
+        },
+        {
+            "id": "seiza",
+            "name": "Seiza",
+            "romaji": "Seiza",
+            "category": "terminologia",
+            "type": "posizione",
+            "description": "Posizione seduta formale giapponese, in ginocchio con i glutei sui talloni.",
+            "kanji": "正座"
+        },
+        {
+            "id": "shikko",
+            "name": "Shikkō",
+            "romaji": "Shikko",
+            "category": "terminologia",
+            "type": "movimento",
+            "description": "Camminata in ginocchio. Movimento fondamentale per suwariwaza.",
+            "kanji": "膝行"
+        },
+        {
+            "id": "ukemi",
+            "name": "Ukemi",
+            "romaji": "Ukemi",
+            "category": "terminologia",
+            "type": "movimento",
+            "description": "L'arte di cadere. Cadute avanti, indietro e rotolate che proteggono il corpo.",
+            "kanji": "受身",
+            "variants": [
+                "Mae ukemi (avanti)",
+                "Ushiro ukemi (indietro)",
+                "Tobu ukemi (volante)"
+            ]
+        },
+        {
+            "id": "irimi",
+            "name": "Irimi",
+            "romaji": "Irimi",
+            "category": "terminologia",
+            "type": "principio",
+            "description": "Entrare. Principio fondamentale di entrare nella linea dell'attacco.",
+            "kanji": "入身"
+        },
+        {
+            "id": "tenkan",
+            "name": "Tenkan",
+            "romaji": "Tenkan",
+            "category": "terminologia",
+            "type": "principio",
+            "description": "Girare. Rotazione del corpo per redirigere la forza dell'attacco.",
+            "kanji": "転換"
+        },
+        {
+            "id": "omote",
+            "name": "Omote",
+            "romaji": "Omote",
+            "category": "terminologia",
+            "type": "direzione",
+            "description": "Davanti, frontale. Esecuzione della tecnica passando davanti a uke.",
+            "kanji": "表"
+        },
+        {
+            "id": "ura",
+            "name": "Ura",
+            "romaji": "Ura",
+            "category": "terminologia",
+            "type": "direzione",
+            "description": "Dietro, posteriore. Esecuzione della tecnica passando dietro a uke.",
+            "kanji": "裏"
+        },
+        {
+            "id": "ki",
+            "name": "Ki",
+            "romaji": "Ki",
+            "category": "terminologia",
+            "type": "concetto",
+            "description": "Energia vitale, spirito. Il flusso di energia che anima tutte le cose.",
+            "kanji": "気",
+            "spiritual": "Il Ki è il ponte tra mente e corpo, tra intenzione e azione."
+        },
+        {
+            "id": "kokyu",
+            "name": "Kokyū",
+            "romaji": "Kokyu",
+            "category": "terminologia",
+            "type": "concetto",
+            "description": "Respirazione, respiro. Il timing e il ritmo della tecnica.",
+            "kanji": "呼吸"
+        },
+        {
+            "id": "maai",
+            "name": "Ma-ai",
+            "romaji": "Maai",
+            "category": "terminologia",
+            "type": "concetto",
+            "description": "Distanza di combattimento. La relazione spaziale corretta tra i praticanti.",
+            "kanji": "間合い"
+        },
+        {
+            "id": "kuzushi",
+            "name": "Kuzushi",
+            "romaji": "Kuzushi",
+            "category": "terminologia",
+            "type": "concetto",
+            "description": "Rompere l'equilibrio. Prerequisito per ogni tecnica efficace.",
+            "kanji": "崩し"
+        },
+        {
+            "id": "zanshin",
+            "name": "Zanshin",
+            "romaji": "Zanshin",
+            "category": "terminologia",
+            "type": "concetto",
+            "description": "Mente che rimane. Stato di vigilanza mantenuto dopo la tecnica.",
+            "kanji": "残心"
+        },
+        {
+            "id": "jiyu",
+            "name": "Jiyūwaza",
+            "romaji": "Jiyuwaza",
+            "category": "terminologia",
+            "type": "pratica",
+            "description": "Tecniche libere. Pratica senza attacco predefinito, sviluppa spontaneità.",
+            "kanji": "自由技"
+        },
+        {
+            "id": "randori",
+            "name": "Randori",
+            "romaji": "Randori",
+            "category": "terminologia",
+            "type": "pratica",
+            "description": "Presa libera, pratica con attacchi multipli. Uno contro molti.",
+            "kanji": "乱取り"
+        }
+    ],
+    "equipment": [
+        {
+            "id": "bokken",
+            "name": "Bokken",
+            "romaji": "Bokken",
+            "category": "arma",
+            "type": "legno",
+            "description": "Spada di legno. Replica della katana usata per l'allenamento sicuro delle tecniche di spada.",
+            "kanji": "木剣",
+            "usage": "Suburi, awase, kumi-tachi"
+        },
+        {
+            "id": "jo",
+            "name": "Jō",
+            "romaji": "Jo",
+            "category": "arma",
+            "type": "legno",
+            "description": "Bastone corto di circa 128 cm. Arma versatile per colpi, parate e leve.",
+            "kanji": "杖",
+            "usage": "Suburi, kata, kumi-jo, jo-dori"
+        },
+        {
+            "id": "tanto",
+            "name": "Tantō",
+            "romaji": "Tanto",
+            "category": "arma",
+            "type": "legno/gomma",
+            "description": "Coltello di legno o gomma. Usato per praticare le difese da coltello (tantōtori).",
+            "kanji": "短刀",
+            "usage": "Tantōtori"
+        },
+        {
+            "id": "gi",
+            "name": "Gi / Keikogi",
+            "romaji": "Gi",
+            "category": "abbigliamento",
+            "type": "vestito",
+            "description": "L'uniforme di pratica. Giacca e pantaloni bianchi in cotone resistente.",
+            "kanji": "着"
+        },
+        {
+            "id": "hakama",
+            "name": "Hakama",
+            "romaji": "Hakama",
+            "category": "abbigliamento",
+            "type": "vestito",
+            "description": "Pantaloni larghi tradizionali. Indossati dai gradi Dan e rappresentano dignità e impegno.",
+            "kanji": "袴",
+            "spiritual": "Le sette pieghe rappresentano le sette virtù del Budo."
+        },
+        {
+            "id": "obi",
+            "name": "Obi",
+            "romaji": "Obi",
+            "category": "abbigliamento",
+            "type": "vestito",
+            "description": "La cintura. Bianca per i Kyu, nera per i Dan.",
+            "kanji": "帯"
+        },
+        {
+            "id": "zori",
+            "name": "Zōri",
+            "romaji": "Zori",
+            "category": "abbigliamento",
+            "type": "calzatura",
+            "description": "Sandali tradizionali giapponesi. Usati fuori dal tatami.",
+            "kanji": "草履"
+        },
+        {
+            "id": "tatami",
+            "name": "Tatami",
+            "romaji": "Tatami",
+            "category": "attrezzatura",
+            "type": "pavimento",
+            "description": "Materassino da pavimento. Superficie su cui si pratica l'Aikido.",
+            "kanji": "畳"
+        }
+    ]
+}
