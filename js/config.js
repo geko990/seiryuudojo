@@ -1,5 +1,5 @@
 export const CONFIG = {
-    APP_VERSION: '0.5.47',
+    APP_VERSION: '0.5.48',
     APP_NAME: 'Seiryuu Dojo',
     BUILD_DATE: new Date().toLocaleDateString('it-IT')
 };

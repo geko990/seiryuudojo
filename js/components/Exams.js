@@ -1,15 +1,17 @@
 export default class Exams {
     constructor() {
+        // COMPLETE exam programs from Aikikai d'Italia - Hiroshi Tada Sensei
         this.examPrograms = {
             '6° Kyu': {
-                requisiti: '20 ore di allenamento, 2 mesi dall\'iscrizione',
+                requisiti: '20 ore, 2 mesi dall\'iscrizione',
                 preparatori: [
-                    'Seiza, Rei, Saluto iniziale/finale',
+                    'Seiza, Rei (saluto)',
                     'Kokyū (forme base di respirazione)',
                     'Kokyū awase (armonizzazione del respiro)',
                     'Ikkyō undō (esercizio di ikkyō)',
                     'Aikitaisō (ginnastica propedeutica)',
-                    'Ukemi (mae e ushiro)',
+                    'Mae ukemi (caduta avanti)',
+                    'Ushiro ukemi (caduta indietro)',
                     'Ashisabaki (movimenti dei piedi)'
                 ],
                 tachiwaza: [
@@ -22,15 +24,17 @@ export default class Exams {
                 ]
             },
             '5° Kyu': {
-                requisiti: '20 ore di allenamento, 2 mesi dal 6° Kyu',
+                requisiti: '20 ore, 2 mesi dal 6° Kyu',
                 preparatori: [
                     'Shihō giri (taglio in 4 direzioni)',
-                    'Gyaku ukemi',
-                    'Shikko e ushiroshikko'
+                    'Gyaku ukemi (caduta inversa)',
+                    'Shikko (camminata in ginocchio)',
+                    'Ushiroshikko'
                 ],
                 tachiwaza: [
-                    'Katatetori ikkyō (omote/ura)',
-                    'Katatetori shihōnage (omote/ura)',
+                    'Katatetori aihanmi ikkyō (omote/ura)',
+                    'Katatetori aihanmi shihōnage (omote/ura)',
+                    'Katatetori aihanmi uchikaitensankyō (omote/ura)',
                     'Katatetori udekimenage (irimi/tenkan)',
                     'Katatetori iriminage',
                     'Katatetori tenchinage',
@@ -45,93 +49,166 @@ export default class Exams {
                 ]
             },
             '4° Kyu': {
-                requisiti: '60 ore di allenamento, 3 mesi dal 5° Kyu',
+                requisiti: '60 ore, 3 mesi dal 5° Kyu',
                 preparatori: [
                     'Happō giri (taglio in 8 direzioni)',
-                    'Taisabaki avanzato'
+                    'Taisabaki avanzato',
+                    'Kaiten ukemi (caduta rotolata)'
                 ],
                 tachiwaza: [
+                    'Katatetori aihanmi ikkyō (omote/ura)',
+                    'Katatetori aihanmi shihōnage (omote/ura)',
+                    'Katatetori aihanmi uchikaitensankyō (omote/ura)',
+                    'Katatetori udekimenage (irimi/tenkan)',
+                    'Katatetori iriminage',
+                    'Katatetori tenchinage',
+                    'Shōmenuchi ikkyō (omote/ura)',
                     'Shōmenuchi nikyō (omote/ura)',
                     'Shōmenuchi sankyō (omote/ura)',
+                    'Shōmenuchi kotegaeshi',
                     'Yokomenuchi shihōnage (omote/ura)',
                     'Yokomenuchi iriminage',
                     'Katatetori gyakuhanmi kotegaeshi'
                 ],
                 suwariwaza: [
+                    'Katatori ikkyō (omote/ura)',
+                    'Shōmenuchi ikkyō (omote/ura)',
                     'Shōmenuchi nikyō (omote/ura)',
-                    'Katatori nikyō (omote/ura)'
+                    'Katatori nikyō (omote/ura)',
+                    'Ryōtetori kokyūhō'
                 ]
             },
             '3° Kyu': {
-                requisiti: '80 ore di allenamento, 4 mesi dal 4° Kyu',
+                requisiti: '80 ore, 4 mesi dal 4° Kyu',
                 preparatori: [
                     'Katatetori gyakuhanmi (4 direzioni)',
-                    'Hitori keiko (pratica solitaria)'
+                    'Hitori keiko (pratica solitaria)',
+                    'Tobu ukemi (caduta volante)'
                 ],
                 tachiwaza: [
-                    'Ryōtetori nikyō (omote/ura)',
-                    'Ryōtetori sankyō (omote/ura)',
+                    'Katatetori aihanmi ikkyō (omote/ura)',
+                    'Katatetori aihanmi shihōnage (omote/ura)',
+                    'Katatetori aihanmi uchikaitensankyō (omote/ura)',
+                    'Katatetori udekimenage (irimi/tenkan)',
+                    'Katatetori iriminage',
+                    'Katatetori tenchinage',
+                    'Shōmenuchi ikkyō (omote/ura)',
                     'Shōmenuchi nikyō (omote/ura)',
                     'Shōmenuchi sankyō (omote/ura)',
-                    'Ushirowaza: ryōtedori, ryōkatadori'
+                    'Shōmenuchi kotegaeshi',
+                    'Shōmenuchi iriminage',
+                    'Yokomenuchi shihōnage (omote/ura)',
+                    'Yokomenuchi iriminage',
+                    'Yokomenuchi kotegaeshi',
+                    'Katatetori gyakuhanmi kotegaeshi',
+                    'Ryōtetori nikyō (omote/ura)',
+                    'Ryōtetori sankyō (omote/ura)',
+                    'Ushiro ryōtedori ikkyō (omote/ura)',
+                    'Ushiro ryōkatadori ikkyō (omote/ura)'
                 ],
                 suwariwaza: [
+                    'Katatori ikkyō (omote/ura)',
+                    'Katatori nikyō (omote/ura)',
+                    'Katatori sankyō (omote/ura)',
+                    'Shōmenuchi ikkyō (omote/ura)',
+                    'Shōmenuchi nikyō (omote/ura)',
                     'Shōmenuchi sankyō (omote/ura)',
-                    'Katatori sankyō (omote/ura)'
+                    'Ryōtetori kokyūhō'
                 ],
                 jo: [
-                    'Shōmenuchi, Yokomenuchi, Yokotsuki',
-                    'Dōuchi, Ashiuchi'
+                    'Shōmenuchi',
+                    'Yokomenuchi',
+                    'Yokotsuki',
+                    'Dōuchi',
+                    'Ashiuchi'
                 ]
             },
             '2° Kyu': {
-                requisiti: '100 ore di allenamento, 4 mesi dal 3° Kyu',
+                requisiti: '100 ore, 4 mesi dal 3° Kyu',
                 tachiwaza: [
-                    'Katatetori aihanmi ikkyō-sankyō',
+                    'Katatetori aihanmi ikkyō-sankyō (omote/ura)',
+                    'Katatetori aihanmi shihōnage (omote/ura)',
+                    'Katatetori udekimenage (irimi/tenkan)',
+                    'Katatetori iriminage, tenchinage',
+                    'Shōmenuchi ikkyō-sankyō (omote/ura)',
+                    'Shōmenuchi kotegaeshi, iriminage',
+                    'Yokomenuchi shihōnage (omote/ura)',
+                    'Yokomenuchi iriminage, kotegaeshi',
                     'Yokomenuchi gokkyō',
-                    'Ushirowaza complete',
-                    'Tantōtori (difesa da coltello)'
+                    'Ryōtetori nikyō, sankyō (omote/ura)',
+                    'Ushiro ryōtedori ikkyō-sankyō',
+                    'Ushiro ryōkatadori ikkyō-sankyō',
+                    'Ushiro kubishime ikkyō-sankyō',
+                    'Tantōtori: shōmenuchi, yokomenuchi, tsuki'
                 ],
                 suwariwaza: [
+                    'Katatori ikkyō-sankyō (omote/ura)',
+                    'Shōmenuchi ikkyō-sankyō (omote/ura)',
                     'Shōmenuchi yonkyō (omote/ura)',
-                    'Yokomenuchi variazioni'
+                    'Yokomenuchi ikkyō-nikyō',
+                    'Ryōtetori kokyūhō'
                 ],
                 hanmihantachiwaza: [
-                    'Katatetori ikkyō-sankyō',
-                    'Shōmenuchi iriminage, kotegaeshi'
+                    'Katatetori ikkyō-sankyō (omote/ura)',
+                    'Katatetori shihōnage',
+                    'Shōmenuchi iriminage',
+                    'Shōmenuchi kotegaeshi'
                 ]
             },
             '1° Kyu': {
-                requisiti: '120 ore di allenamento, 5 mesi dal 2° Kyu',
+                requisiti: '120 ore, 5 mesi dal 2° Kyu',
                 preparatori: [
                     'Kokyū sōren (esercizi mattutini)',
-                    'Tori fune, Furutama',
+                    'Tori fune',
+                    'Furutama',
                     'Ikkyō kaiten (4 forme)'
                 ],
                 tachiwaza: [
-                    'Tutte le tecniche precedenti',
-                    'Jiyūwaza (tecniche libere)',
-                    'Variazioni e combinazioni'
+                    'Katatetori: ikkyō-yonkyō, shihōnage, iriminage, kotegaeshi, udekimenage, tenchinage',
+                    'Shōmenuchi: ikkyō-yonkyō, shihōnage, iriminage, kotegaeshi',
+                    'Yokomenuchi: ikkyō-sankyō, gokkyō, shihōnage, iriminage, kotegaeshi',
+                    'Ryōtetori: ikkyō-sankyō, shihōnage, iriminage, kotegaeshi, tenchinage',
+                    'Katadori menuchi: ikkyō-sankyō, shihōnage, iriminage',
+                    'Ushiro ryōtedori: ikkyō-sankyō, shihōnage, kotegaeshi',
+                    'Ushiro ryōkatadori: ikkyō-sankyō, shihōnage',
+                    'Ushiro kubishime: ikkyō-sankyō',
+                    'Tantōtori: tutte le variazioni',
+                    'Jiyūwaza (tecniche libere)'
+                ],
+                suwariwaza: [
+                    'Katatori, shōmenuchi, yokomenuchi: ikkyō-yonkyō',
+                    'Ryōtetori kokyūhō avanzato'
+                ],
+                hanmihantachiwaza: [
+                    'Tutte le variazioni katatetori e shōmenuchi'
                 ],
                 bukiwaza: [
-                    'Ken: suburi, awase',
-                    'Jo: kata 1-5'
+                    'Ken: suburi 1-7, awase',
+                    'Jo: suburi, kata 1-5'
                 ]
             },
             '1° Dan': {
                 requisiti: '1 anno dal 1° Kyu, età minima 15 anni',
                 tachiwaza: [
-                    'Padronanza di tutte le tecniche kyu',
-                    'Jiyūwaza avanzato',
-                    'Randori (attacchi multipli)'
+                    'Padronanza completa di tutte le tecniche kyu',
+                    'Katatetori, ryōtetori, morōtedori: tutte le tecniche',
+                    'Shōmenuchi, yokomenuchi: tutte le tecniche',
+                    'Katadori menuchi: tutte le tecniche',
+                    'Ushiro ryōtedori, ryōkatadori, kubishime: tutte le tecniche',
+                    'Jiyūwaza (tecniche libere): fluidità e controllo',
+                    'Randori (attacchi multipli): 2-3 uke'
                 ],
                 suwariwaza: [
-                    'Tutte le variazioni',
-                    'Kokyūhō avanzato'
+                    'Tutte le variazioni precedenti con controllo avanzato',
+                    'Kokyūhō: variazioni avanzate con kime'
+                ],
+                hanmihantachiwaza: [
+                    'Tutte le tecniche con padronanza'
                 ],
                 bukiwaza: [
-                    'Ken: kumi-tachi 1-3',
-                    'Jo: kata 1-10, kumi-jo'
+                    'Ken: suburi 1-7, kumi-tachi 1-3',
+                    'Jo: kata 1-10, kumi-jo 1-3',
+                    'Ken-tai-jo: forme base'
                 ]
             }
         };
@@ -140,13 +217,24 @@ export default class Exams {
     async render() {
         const div = document.createElement('div');
         div.className = 'exams-container';
+
+        const kyuGrades = ['6° Kyu', '5° Kyu', '4° Kyu', '3° Kyu', '2° Kyu', '1° Kyu'];
+        const danGrades = ['1° Dan'];
+
         div.innerHTML = `
-            <h2 style="padding-left: 10px; margin-bottom: 20px;">Programma Esami</h2>
-            <div class="exams-list">
-                ${Object.keys(this.examPrograms).map(grade => `
-                    <button class="exam-btn card" data-exam="${grade}">
-                        <span class="exam-grade">${grade}</span>
-                        <span class="exam-arrow">›</span>
+            <h2 style="padding-left: 10px; margin-bottom: 15px;">Programma Esami</h2>
+            <div class="exams-grid-kyu">
+                ${kyuGrades.map(grade => `
+                    <button class="exam-btn-grid card" data-exam="${grade}">
+                        <span class="exam-grade-text">${grade}</span>
+                    </button>
+                `).join('')}
+            </div>
+            <div class="exams-dan">
+                ${danGrades.map(grade => `
+                    <button class="exam-btn-full card" data-exam="${grade}">
+                        <span class="exam-grade-text">${grade}</span>
+                        <span class="exam-subtitle">Shodan - Cintura Nera</span>
                     </button>
                 `).join('')}
             </div>
@@ -154,7 +242,7 @@ export default class Exams {
 
         // Add click handlers
         setTimeout(() => {
-            div.querySelectorAll('.exam-btn').forEach(btn => {
+            div.querySelectorAll('.exam-btn-grid, .exam-btn-full').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const grade = btn.dataset.exam;
                     this.showExamDetail(grade);

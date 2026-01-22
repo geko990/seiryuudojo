@@ -552,34 +552,53 @@ h3 {
     min-height: 120px;
 }
 
-/* Exams List - Single column, wide buttons */
-.exams-list {
+/* Exams - 2x2 Grid for Kyu, Full Width for Dan */
+.exams-grid-kyu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 5px;
+    margin-bottom: 12px;
+}
+
+.exams-dan {
+    padding: 0 5px;
+}
+
+.exam-btn-grid {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 0 10px;
-}
-
-.exam-btn {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 18px 20px;
+    padding: 20px 15px;
     border: none;
     cursor: pointer;
-    text-align: left;
-    font-size: 1em;
+    text-align: center;
+    min-height: 70px;
 }
 
-.exam-btn .exam-grade {
+.exam-btn-full {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.exam-grade-text {
+    font-size: 1.2em;
     font-weight: 600;
     color: #333;
 }
 
-.exam-btn .exam-arrow {
-    font-size: 1.5em;
-    color: var(--accent-color);
-    font-weight: 300;
+.exam-subtitle {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
 }
 
 .search-bar {
