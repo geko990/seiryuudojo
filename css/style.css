@@ -345,8 +345,9 @@ body {
     /* Top Alignment: Content starts right under bamboo pole */
     padding-top: 10px;
 
-    padding-left: 20px;
-    padding-right: 20px;
+    /* Lateral padding handled by #app - no double padding */
+    padding-left: 0;
+    padding-right: 0;
 
     /* Bottom Alignment: Content ends BEFORE the nav bar */
     padding-bottom: 120px;
