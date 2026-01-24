@@ -11,6 +11,57 @@ class App {
         this.router = new Router();
         this.bell = new Bell('#notification-bell');
         this.init();
+        this.setupAutoUpdate();
+    }
+
+    // Auto-update check: if user doesn't interact for 10 seconds on first load, force update
+    setupAutoUpdate() {
+        // Only run once per session (avoid refresh loops)
+        if (sessionStorage.getItem('seiryuu_update_checked')) {
+            return;
+        }
+
+        let updateTimer = setTimeout(() => {
+            this.checkForUpdates();
+        }, 10000); // 10 seconds
+
+        // Cancel timer on any user interaction
+        const cancelUpdate = () => {
+            if (updateTimer) {
+                clearTimeout(updateTimer);
+                updateTimer = null;
+                // Mark as checked so it doesn't restart
+                sessionStorage.setItem('seiryuu_update_checked', 'true');
+                // Remove listeners
+                document.removeEventListener('touchstart', cancelUpdate);
+                document.removeEventListener('click', cancelUpdate);
+                document.removeEventListener('scroll', cancelUpdate);
+            }
+        };
+
+        document.addEventListener('touchstart', cancelUpdate, { once: true });
+        document.addEventListener('click', cancelUpdate, { once: true });
+        document.addEventListener('scroll', cancelUpdate, { once: true });
+    }
+
+    async checkForUpdates() {
+        sessionStorage.setItem('seiryuu_update_checked', 'true');
+
+        if ('serviceWorker' in navigator) {
+            try {
+                const registration = await navigator.serviceWorker.getRegistration();
+                if (registration) {
+                    await registration.update();
+                    // If there's a waiting worker, activate it and refresh
+                    if (registration.waiting) {
+                        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+                        window.location.reload();
+                    }
+                }
+            } catch (err) {
+                console.log('Update check failed:', err);
+            }
+        }
     }
 
     init() {

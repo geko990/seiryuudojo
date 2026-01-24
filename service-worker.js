@@ -1,11 +1,32 @@
 // CACHE VERSION - Update this to force cache refresh!
-const CACHE_VERSION = '0.5.36';
+const CACHE_VERSION = '0.5.50';
 const CACHE_NAME = `seiryuu-${CACHE_VERSION}`;
 
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './manifest.json',
+    // CSS
+    './css/style.css',
+    // Core JS
+    './js/app.js',
+    './js/config.js',
+    './js/router.js',
+    // Components
+    './js/components/Bell.js',
+    './js/components/Exams.js',
+    './js/components/Glossary.js',
+    './js/components/Home.js',
+    './js/components/Info.js',
+    './js/components/Settings.js',
+    './js/components/Study.js',
+    // Data files
+    './data/aikido_glossary.json',
+    './data/curriculum.json',
+    './data/etiquette.json',
+    './data/foundations.json',
+    './data/posts.json',
+    // Assets
     './assets/kamiza_bg.png',
     './assets/icon-192.png',
     './assets/icon-512.png'
@@ -35,6 +56,13 @@ self.addEventListener('activate', (event) => {
             })
         )).then(() => self.clients.claim()) // Take control immediately
     );
+});
+
+// Listen for skip waiting message from app
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
 });
 
 // Fetch - Network first for JS/CSS, cache first for images
