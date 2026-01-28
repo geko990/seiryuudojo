@@ -11,6 +11,13 @@ export default class Bell {
 
     updateAppBadge(count) {
         if ('setAppBadge' in navigator) {
+            // Check user preference (default true)
+            const enabled = localStorage.getItem('seiryuu_badge_enabled') !== 'false';
+            if (!enabled) {
+                navigator.clearAppBadge();
+                return;
+            }
+
             try {
                 if (count > 0) {
                     navigator.setAppBadge(count);
