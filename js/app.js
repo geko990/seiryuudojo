@@ -195,7 +195,6 @@ class App {
 
     showPinnedTechniques() {
         const pinnedItems = JSON.parse(localStorage.getItem('seiryuu_exam_pins') || '{}');
-        // We also need the checks to mark them as done
         const keys = Object.keys(pinnedItems);
 
         if (keys.length === 0) {
@@ -207,36 +206,55 @@ class App {
             return;
         }
 
-        // Helper to parse ID: grade|section|key|tech (old) or grade|section|attack|tech (new)
-        // Actually, let's just use the ID components.
-        // We stored: `${grade}|${section.key}|${attack}|${tech}` or similar.
-
         let listHtml = keys.map(id => {
             const parts = id.split('|');
-            // Grade is usually parts[0], but let's just show the full tech string if possible
-            // Better: parse it nicely.
-            const techName = parts[parts.length - 1]; // Tech is always last
-            const grade = parts[0];
-            const type = parts[1] === 'tachiwaza' ? 'Tachiwaza' :
-                parts[1] === 'suwariwaza' ? 'Suwariwaza' :
-                    parts[1] === 'hanmihantachiwaza' ? 'Hanmi-hantachi' : parts[1];
+            const fullTechName = parts[parts.length - 1];
+
+            // Split name and details (Omote/Ura etc)
+            let name = fullTechName;
+            let details = '';
+
+            const parenIndex = fullTechName.indexOf('(');
+            if (parenIndex !== -1) {
+                name = fullTechName.substring(0, parenIndex).trim();
+                details = fullTechName.substring(parenIndex).trim();
+            }
 
             return `
-                <div class="pinned-item-card" id="pin-card-${id.replace(/[^a-zA-Z0-9]/g, '')}" style="display:flex; align-items:center; justify-content:space-between; padding:12px; border-bottom:1px solid #eee;">
-                    <div>
-                        <div style="font-weight:bold; color:#333;">${techName}</div>
-                        <div style="font-size:0.8em; color:#666;">${grade} - ${type}</div>
-                    </div>
-                    <div onclick="window.seiryuuApp.togglePinToDone('${id}')" style="cursor:pointer; padding:5px; border:1px solid #ccc; border-radius:4px; background:#fff;">
-                        ✅ Fatto
+                <div class="pinned-item-card" id="pin-card-${id.replace(/[^a-zA-Z0-9]/g, '')}" style="display:flex; align-items:center; padding:12px; border-bottom:1px solid #eee;">
+                    <!-- Checkbox Circle -->
+                     <div onclick="window.seiryuuApp.togglePinToDone('${id}')" 
+                          style="
+                            width: 24px; 
+                            height: 24px; 
+                            border: 2px solid #ccc; 
+                            border-radius: 50%; 
+                            margin-right: 15px; 
+                            cursor: pointer; 
+                            flex-shrink: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            transition: all 0.2s;
+                          "
+                          onmouseover="this.style.borderColor='var(--accent-color)'"
+                          onmouseout="this.style.borderColor='#ccc'"
+                     >
+                        <div class="check-inner" style="width: 14px; height: 14px; background: var(--accent-color); border-radius: 50%; opacity: 0; transition: opacity 0.2s;"></div>
+                     </div>
+
+                    <!-- Text Content -->
+                    <div style="flex-grow: 1;">
+                        <div style="font-weight:bold; font-size: 1.05em; color:#222; margin-bottom: 2px;">${name}</div>
+                        ${details ? `<div style="font-size:0.85em; color:#666; font-weight: normal;">${details}</div>` : ''}
                     </div>
                 </div>
             `;
         }).join('');
 
         this.showModal(`
-            <h2>Tecniche da ripetere</h2>
-            <p style="font-size:0.9em; color:#666; margin-bottom:15px;">Clicca su "Fatto" per rimuovere dai pin e segnare come studiata.</p>
+            <h2 style="margin-bottom: 5px;">Tecniche da ripetere</h2>
+            <p style="font-size:0.85em; color:#888; margin-bottom:15px; margin-top:0;">Spunta per segnare come fatto ✅</p>
             <div style="max-height: 60vh; overflow-y: auto;">
                 ${listHtml}
             </div>
@@ -244,74 +262,45 @@ class App {
     }
 
     togglePinToDone(id) {
-        // 1. Remove from Pins
-        const pins = JSON.parse(localStorage.getItem('seiryuu_exam_pins') || '{}');
-        if (pins[id]) {
-            delete pins[id];
-            localStorage.setItem('seiryuu_exam_pins', JSON.stringify(pins));
-        }
-
-        // 2. Add to Checks (Mark as Done)
-        const checks = JSON.parse(localStorage.getItem('seiryuu_exam_checks') || '{}');
-        checks[id] = true;
-        localStorage.setItem('seiryuu_exam_checks', JSON.stringify(checks));
-
-        // 3. UI Update (remove element)
         const safeId = id.replace(/[^a-zA-Z0-9]/g, '');
         const el = document.getElementById(`pin-card-${safeId}`);
+
+        // Visual feedback first
         if (el) {
-            el.style.opacity = '0';
+            const checkInner = el.querySelector('.check-inner');
+            if (checkInner) checkInner.style.opacity = '1';
+
+            // Short Delay for animation
             setTimeout(() => {
-                el.remove();
-                // If list empty, show message? 
-                if (document.querySelectorAll('.pinned-item-card').length === 0) {
-                    this.showModal(`
-                        <h2>Tecniche da ripetere</h2>
-                        <p>Hai completato tutte le tecniche pinnate! 🎉</p>
-                    `);
+                // 1. Remove from Pins
+                const pins = JSON.parse(localStorage.getItem('seiryuu_exam_pins') || '{}');
+                if (pins[id]) {
+                    delete pins[id];
+                    localStorage.setItem('seiryuu_exam_pins', JSON.stringify(pins));
                 }
-            }, 300);
+
+                // 2. Add to Checks (Mark as Done)
+                const checks = JSON.parse(localStorage.getItem('seiryuu_exam_checks') || '{}');
+                checks[id] = true;
+                localStorage.setItem('seiryuu_exam_checks', JSON.stringify(checks));
+
+                // 3. UI Update (remove element)
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(20px)'; // Slide out effect
+                el.style.transition = 'opacity 0.3s, transform 0.3s';
+
+                setTimeout(() => {
+                    el.remove();
+                    // If list empty, show message? 
+                    if (document.querySelectorAll('.pinned-item-card').length === 0) {
+                        this.showModal(`
+                            <h2>Tecniche da ripetere</h2>
+                            <p>Hai completato tutte le tecniche pinnate! 🎉</p>
+                        `);
+                    }
+                }, 300);
+            }, 300); // Wait for check animation
         }
-    }
-
-    filterWeapons() {
-        // Navigate to Search and filter by Weapons
-        this.router.navigate('search');
-        this.updateNav('search');
-        // Small timeout to let component render
-        setTimeout(() => {
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) {
-                searchInput.value = "bokken"; // Simple filter for now
-                searchInput.dispatchEvent(new Event('input'));
-            }
-        }, 100);
-    }
-
-    showFoundations() {
-        this.showModal(`
-            <h2>Fondamenti</h2>
-            <h3>Tai Sabaki</h3>
-            <p>Irimi, Tenkan, Tenshin...</p>
-            <h3>Ashi Sabaki</h3>
-            <p>Tsugi-ashi, Ayumi-ashi...</p>
-        `);
-    }
-
-
-
-    filterWeapons() {
-        // Navigate to Search and filter by Weapons
-        this.router.navigate('search');
-        this.updateNav('search');
-        // Small timeout to let component render
-        setTimeout(() => {
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) {
-                searchInput.value = "bukiwaza";
-                searchInput.dispatchEvent(new Event('input'));
-            }
-        }, 100);
     }
 
     showFoundations() {
