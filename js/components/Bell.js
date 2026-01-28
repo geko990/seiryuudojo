@@ -128,6 +128,17 @@ export default class Bell {
         const self = this;
 
         container.addEventListener('click', () => {
+            // iOS Requirement: Request notification permission on user interaction
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        // Refresh badge if we have unread count
+                        const count = self.getUnreadNotifications().length;
+                        self.updateAppBadge(count);
+                    }
+                });
+            }
+
             const unread = self.getUnreadNotifications();
 
             let listHtml = '';
