@@ -9,6 +9,20 @@ export default class Bell {
         this.readIds = this.getReadIds();
     }
 
+    updateAppBadge(count) {
+        if ('setAppBadge' in navigator) {
+            try {
+                if (count > 0) {
+                    navigator.setAppBadge(count);
+                } else {
+                    navigator.clearAppBadge();
+                }
+            } catch (e) {
+                console.warn('Error setting app badge:', e);
+            }
+        }
+    }
+
     getReadIds() {
         try {
             return JSON.parse(localStorage.getItem('seiryuu_read_notifications') || '[]');
@@ -25,6 +39,11 @@ export default class Bell {
         if (!this.readIds.includes(postId)) {
             this.readIds.push(postId);
             this.saveReadIds();
+
+            // Update visual badge and PWA badge
+            const unreadCount = this.getUnreadNotifications().length;
+            this.renderBellWithCount(unreadCount);
+            this.updateAppBadge(unreadCount);
         }
     }
 
@@ -79,8 +98,8 @@ export default class Bell {
         // Always show the bell first (so it's never missing)
         let unreadCount = 0;
 
-        // Render bell immediately
-        const renderBell = (count) => {
+        // Render bell immediately (and store reference to update later)
+        this.renderBellWithCount = (count) => {
             container.innerHTML = `
                <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-color)" stroke="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
@@ -90,14 +109,15 @@ export default class Bell {
         };
 
         // Show bell immediately (no badge yet)
-        renderBell(0);
+        this.renderBellWithCount(0);
 
         // Try to fetch notifications in background
         try {
             await this.fetchNotifications();
             unreadCount = this.getUnreadNotifications().length;
             // Re-render with badge if there are unread
-            renderBell(unreadCount);
+            this.renderBellWithCount(unreadCount);
+            this.updateAppBadge(unreadCount);
         } catch (error) {
             console.warn('Bell: Failed to fetch notifications', error);
             // Bell is already rendered, just leave it without badge
@@ -130,6 +150,13 @@ export default class Bell {
                 ${listHtml}
                 ${unread.length > 0 ? `<button onclick="window.seiryuuApp.markAllNotificationsRead()" style="width: 100%; margin-top: 10px; padding: 10px; background: #eee; border: none; border-radius: 8px; color: #666; cursor: pointer;">Segna tutte come lette</button>` : ''}
             `);
+
+            // Also expose markAllNotificationsRead globally if needed
+            window.seiryuuApp.markAllNotificationsRead = () => {
+                unread.forEach(n => self.markAsRead(n.id));
+                // Reload modal or close it
+                window.seiryuuApp.closeModal();
+            };
         });
     }
 }
