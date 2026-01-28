@@ -1,5 +1,5 @@
 // CACHE VERSION - Update this to force cache refresh!
-const CACHE_VERSION = '0.5.53';
+const CACHE_VERSION = '0.5.54';
 const CACHE_NAME = `seiryuu-${CACHE_VERSION}`;
 
 const ASSETS_TO_CACHE = [
