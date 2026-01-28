@@ -80,8 +80,6 @@ export default class Exams {
             },
             '3° Kyu': {
                 requisiti: '75 ore, 3 mesi dal 4° Kyu',
-                // preparatori: [],
-
                 tachiwaza: {
                     'Katatetori': [
                         'Uchikaitennage',
@@ -112,16 +110,6 @@ export default class Exams {
                         'Sotokaitennage'
                     ]
                 },
-                suwariwaza: {
-                    'Shomenuchi': [
-                        'Kotegaeshi',
-                        'Sankyo (omote ed ura)'
-                    ],
-                    'Katatori': [
-                        'Nikyo (omote ed ura)',
-                        'Sankyo (omote ed ura)'
-                    ]
-                },
                 ushirowaza: {
                     'Ryotetori': [
                         'Nikyo (omote ed ura)',
@@ -131,6 +119,16 @@ export default class Exams {
                         'Kotegaeshi',
                         'Shihonage',
                         'Iriminage'
+                    ]
+                },
+                suwariwaza: {
+                    'Shomenuchi': [
+                        'Kotegaeshi',
+                        'Sankyo (omote ed ura)'
+                    ],
+                    'Katatori': [
+                        'Nikyo (omote ed ura)',
+                        'Sankyo (omote ed ura)'
                     ]
                 }
             },
