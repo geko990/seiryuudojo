@@ -75,8 +75,8 @@ export default class Home {
                 <div class="card home-card" onclick="document.getElementById('posts-feed').scrollIntoView({behavior: 'smooth'})">
                     <h3>Eventi</h3>
                 </div>
-                <div class="card home-card" onclick="window.seiryuuApp.showModal('<p>Il Dojo segue le regole dell\\'Aikikai d\\'Italia.</p>')">
-                    <h3>Etichetta</h3>
+                <div class="card home-card" onclick="window.seiryuuApp.showPinnedTechniques()">
+                    <h3>Tecniche da ripetere</h3>
                 </div>
                 <div class="card home-card" onclick="window.seiryuuApp.router.navigate('search'); setTimeout(() => document.getElementById('search-input').value = 'Bokken', 500);">
                     <h3>Armi</h3>

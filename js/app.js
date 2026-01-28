@@ -193,24 +193,84 @@ class App {
         });
     }
 
-    async showEtiquette() {
-        try {
-            const response = await fetch('data/etiquette.json');
-            const rules = await response.json();
-            const html = `
-                <h2>Etichetta del Dojo</h2>
-                <div style="text-align: left;">
-                    ${rules.map(r => `
-                        <div style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-                            <h3 style="color:var(--accent-color)">${r.title}</h3>
-                            <p>${r.rule}</p>
-                        </div>
-                    `).join('')}
+    showPinnedTechniques() {
+        const pinnedItems = JSON.parse(localStorage.getItem('seiryuu_exam_pins') || '{}');
+        // We also need the checks to mark them as done
+        const keys = Object.keys(pinnedItems);
+
+        if (keys.length === 0) {
+            this.showModal(`
+                <h2>Tecniche da ripetere</h2>
+                <p>Non hai nessuna tecnica pinnata.</p>
+                <p style="font-size:0.9em; color:#666;">Vai nella sezione <strong>Esami</strong> e clicca su 📌 per aggiungere tecniche qui.</p>
+            `);
+            return;
+        }
+
+        // Helper to parse ID: grade|section|key|tech (old) or grade|section|attack|tech (new)
+        // Actually, let's just use the ID components.
+        // We stored: `${grade}|${section.key}|${attack}|${tech}` or similar.
+
+        let listHtml = keys.map(id => {
+            const parts = id.split('|');
+            // Grade is usually parts[0], but let's just show the full tech string if possible
+            // Better: parse it nicely.
+            const techName = parts[parts.length - 1]; // Tech is always last
+            const grade = parts[0];
+            const type = parts[1] === 'tachiwaza' ? 'Tachiwaza' :
+                parts[1] === 'suwariwaza' ? 'Suwariwaza' :
+                    parts[1] === 'hanmihantachiwaza' ? 'Hanmi-hantachi' : parts[1];
+
+            return `
+                <div class="pinned-item-card" id="pin-card-${id.replace(/[^a-zA-Z0-9]/g, '')}" style="display:flex; align-items:center; justify-content:space-between; padding:12px; border-bottom:1px solid #eee;">
+                    <div>
+                        <div style="font-weight:bold; color:#333;">${techName}</div>
+                        <div style="font-size:0.8em; color:#666;">${grade} - ${type}</div>
+                    </div>
+                    <div onclick="window.seiryuuApp.togglePinToDone('${id}')" style="cursor:pointer; padding:5px; border:1px solid #ccc; border-radius:4px; background:#fff;">
+                        ✅ Fatto
+                    </div>
                 </div>
             `;
-            this.showModal(html);
-        } catch (e) {
-            console.error(e);
+        }).join('');
+
+        this.showModal(`
+            <h2>Tecniche da ripetere</h2>
+            <p style="font-size:0.9em; color:#666; margin-bottom:15px;">Clicca su "Fatto" per rimuovere dai pin e segnare come studiata.</p>
+            <div style="max-height: 60vh; overflow-y: auto;">
+                ${listHtml}
+            </div>
+        `);
+    }
+
+    togglePinToDone(id) {
+        // 1. Remove from Pins
+        const pins = JSON.parse(localStorage.getItem('seiryuu_exam_pins') || '{}');
+        if (pins[id]) {
+            delete pins[id];
+            localStorage.setItem('seiryuu_exam_pins', JSON.stringify(pins));
+        }
+
+        // 2. Add to Checks (Mark as Done)
+        const checks = JSON.parse(localStorage.getItem('seiryuu_exam_checks') || '{}');
+        checks[id] = true;
+        localStorage.setItem('seiryuu_exam_checks', JSON.stringify(checks));
+
+        // 3. UI Update (remove element)
+        const safeId = id.replace(/[^a-zA-Z0-9]/g, '');
+        const el = document.getElementById(`pin-card-${safeId}`);
+        if (el) {
+            el.style.opacity = '0';
+            setTimeout(() => {
+                el.remove();
+                // If list empty, show message? 
+                if (document.querySelectorAll('.pinned-item-card').length === 0) {
+                    this.showModal(`
+                        <h2>Tecniche da ripetere</h2>
+                        <p>Hai completato tutte le tecniche pinnate! 🎉</p>
+                    `);
+                }
+            }, 300);
         }
     }
 
@@ -238,26 +298,7 @@ class App {
         `);
     }
 
-    async showEtiquette() {
-        try {
-            const response = await fetch('data/etiquette.json');
-            const rules = await response.json();
-            const html = `
-                <h2>Etichetta del Dojo</h2>
-                <div style="text-align: left;">
-                    ${rules.map(r => `
-                        <div style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-                            <h3 style="color:var(--accent-color)">${r.title}</h3>
-                            <p>${r.rule}</p>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            this.showModal(html);
-        } catch (e) {
-            console.error(e);
-        }
-    }
+
 
     filterWeapons() {
         // Navigate to Search and filter by Weapons
