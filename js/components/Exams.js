@@ -80,57 +80,38 @@ export default class Exams {
             },
             '3° Kyu': {
                 requisiti: '75 ore, 3 mesi dal 4° Kyu',
-                tachiwaza: {
-                    'Katatetori': [
-                        'Uchikaitennage',
-                        'Sankyo (omote ed ura)',
-                        'Yonkyo (omote ed ura)'
-                    ],
-                    'Katateryotetori': [
-                        'Ikkyo (omote ed ura)',
-                        'Nikyo',
-                        'Kotegaeshi'
-                    ],
-                    'Ryotetori': [
-                        'Kotegaeshi',
-                        'Kokyunage'
-                    ],
-                    'Shomenuchi': [
-                        'Yonkyo (omote ed ura)',
-                        'Gokyo'
-                    ],
-                    'Yokomenuchi': [
-                        'Ikkyo (omote ed ura)',
-                        'Uchikaitensankyo',
-                        'Tenchinage'
-                    ],
-                    'Chudantsuki': [
-                        'Sankyo (omote ed ura)',
-                        'Hijikimeosae',
-                        'Sotokaitennage'
-                    ]
-                },
-                ushirowaza: {
-                    'Ryotetori': [
-                        'Nikyo (omote ed ura)',
-                        'Ikkyo (omote ed ura)',
-                        'Sankyo (omote ed ura)',
-                        'Hijikimeosae',
-                        'Kotegaeshi',
-                        'Shihonage',
-                        'Iriminage'
-                    ]
-                },
-                suwariwaza: {
-                    'Shomenuchi': [
-                        'Kotegaeshi',
-                        'Sankyo (omote ed ura)'
-                    ],
-                    'Katatori': [
-                        'Nikyo (omote ed ura)',
-                        'Sankyo (omote ed ura)'
-                    ]
-                }
+                tachiwaza: [
+                    'Katatetori Uchikaitennage',
+                    'Katatetori Sankyo (omote ed ura)',
+                    'Katatetori Yonkyo (omote ed ura)',
+                    'Katateryotetori Ikkyo (omote ed ura)',
+                    'Katateryotetori Nikyo',
+                    'Katateryotetori Kotegaeshi',
+                    'Ryotetori Kotegaeshi',
+                    'Ryotetori Kokyunage',
+                    'Shomenuchi Yonkyo (omote ed ura)',
+                    'Shomenuchi Gokyo',
+                    'Yokomenuchi Ikkyo (omote ed ura)',
+                    'Yokomenuchi Uchikaitensankyo',
+                    'Yokomenuchi Tenchinage',
+                    'Chudantsuki Sankyo (omote ed ura)',
+                    'Chudantsuki Hijikimeosae',
+                    'Chudantsuki Sotokaitennage',
+                    // Ushirowaza merged here as requested
+                    'Ushiro Ryotetori Nikyo (omote ed ura)',
+                    'Ushiro Ryotetori Ikkyo (omote ed ura)',
+                    'Ushiro Ryotetori Sankyo (omote ed ura)',
+                    'Ushiro Ryotetori Hijikimeosae',
+                    'Ushiro Ryotetori Kotegaeshi',
+                    'Ushiro Ryotetori Shihonage',
+                    'Ushiro Ryotetori Iriminage'
+                ],
+                suwariwaza: [
+                    'Shomenuchi Kotegaeshi',
+                    'Shomenuchi Sankyo (omote ed ura)',
+                    'Katatori Nikyo (omote ed ura)',
+                    'Katatori Sankyo (omote ed ura)'
+                ]
             },
             '2° Kyu': {
                 requisiti: '100 ore, 4 mesi dal 3° Kyu',
@@ -273,30 +254,13 @@ export default class Exams {
         let content = `
             <style>
                 .exam-section-title { font-size: 0.95em; margin-bottom: 8px; color: #333; font-weight: bold; margin-top: 15px; }
-                .attack-group { margin-bottom: 8px; border: 1px solid #eee; border-radius: 6px; overflow: hidden; }
-                .attack-header { 
-                    padding: 10px 12px; 
-                    background: #f9f9f9; 
-                    cursor: pointer; 
-                    display: flex; 
-                    justify-content: space-between; 
-                    align-items: center;
-                    font-weight: 500;
-                    color: #444;
-                    user-select: none;
-                }
-                .attack-header:hover { background: #f0f0f0; }
-                .attack-header.active { background: #eef2ff; color: var(--accent-color); }
-                .attack-arrow { transition: transform 0.2s; font-size: 0.8em; }
-                .attack-header.active .attack-arrow { transform: rotate(90deg); }
                 
-                .tech-list { display: none; padding: 5px 0; background: #fff; }
-                .tech-list.open { display: block; }
+                .tech-list { padding: 5px 0; background: #fff; border-radius: 8px; border: 1px solid #eee; }
                 
                 .tech-item { 
                     display: flex; 
                     align-items: flex-start; 
-                    padding: 8px 12px; 
+                    padding: 10px 12px; 
                     border-bottom: 1px solid #f5f5f5;
                 }
                 .tech-item:last-child { border-bottom: none; }
@@ -347,12 +311,6 @@ export default class Exams {
             </p>`;
         }
 
-        // Pinned Section Logic
-        const myPins = [];
-        // We need to iterate everything to find pins for this grade
-        // Or we assume the persist key structure is generic enough.
-        // Let's iterate the sections to find pinned items for *this* exam view.
-
         const sections = [
             { key: 'preparatori', title: '🏋️ Esercizi Preparatori' },
             { key: 'tachiwaza', title: '🥋 Tachiwaza (in piedi)' },
@@ -363,24 +321,17 @@ export default class Exams {
             { key: 'bukiwaza', title: '⚔️ Bukiwaza (armi)' }
         ];
 
-        // Prepare data for rendering (grouping if needed)
-        const renderData = {};
-
+        // Collect pins
+        const myPins = [];
         sections.forEach(section => {
-            const rawData = program[section.key];
-            if (!rawData) return;
-
-            const grouped = this.groupTechniques(rawData);
-            renderData[section.key] = grouped;
-
-            // Check for pins
-            Object.entries(grouped).forEach(([attack, techniques]) => {
-                techniques.forEach((tech, idx) => {
-                    const uniqueId = `${grade}|${section.key}|${attack}|${tech}`;
-                    if (pinnedItems[uniqueId]) {
-                        myPins.push({ attack, tech, id: uniqueId });
-                    }
-                });
+            const data = program[section.key];
+            if (!data) return;
+            const list = Array.isArray(data) ? data : []; // Should always be array now
+            list.forEach(tech => {
+                const uniqueId = `${grade}|${section.key}|${tech}`;
+                if (pinnedItems[uniqueId]) {
+                    myPins.push({ tech, id: uniqueId });
+                }
             });
         });
 
@@ -390,7 +341,7 @@ export default class Exams {
                 <div class="pinned-section">
                     <div class="pinned-title">📌 Da Perfezionare</div>
                     <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;">
-                        ${myPins.map(p => `<li><strong>${p.attack}</strong>: ${p.tech}</li>`).join('')}
+                        ${myPins.map(p => `<li>${p.tech}</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -398,45 +349,38 @@ export default class Exams {
 
         // Render Sections
         sections.forEach(section => {
-            const data = renderData[section.key];
-            if (!data || Object.keys(data).length === 0) return;
+            const data = program[section.key];
+            if (!data || data.length === 0) return;
+
+            // Ensure data is array
+            const list = Array.isArray(data) ? data : [];
+            if (list.length === 0) return;
 
             content += `<div class="exam-section-title">${section.title}</div>`;
+            content += `<div class="tech-list">`;
 
-            Object.entries(data).forEach(([attack, techniques]) => {
-                const attackId = `att-${Math.random().toString(36).substr(2, 9)}`;
+            list.forEach(tech => {
+                const uniqueId = `${grade}|${section.key}|${tech}`;
+                const isChecked = checkedItems[uniqueId] ? 'checked' : '';
+                const isPinned = pinnedItems[uniqueId] ? 'pinned' : '';
 
                 content += `
-                    <div class="attack-group">
-                        <div class="attack-header" onclick="this.nextElementSibling.classList.toggle('open'); this.classList.toggle('active');">
-                            <span>${attack}</span>
-                            <span class="attack-arrow">▶</span>
+                    <div class="tech-item">
+                        <div class="tech-checkbox-wrapper">
+                            <input type="checkbox" class="tech-checkbox" 
+                                ${isChecked} 
+                                onchange="window.seiryuuApp.toggleExamCheck('${uniqueId}', this.checked)">
                         </div>
-                        <div class="tech-list" id="${attackId}">
-                            ${techniques.map((tech, idx) => {
-                    const uniqueId = `${grade}|${section.key}|${attack}|${tech}`;
-                    const isChecked = checkedItems[uniqueId] ? 'checked' : '';
-                    const isPinned = pinnedItems[uniqueId] ? 'pinned' : '';
-
-                    return `
-                                    <div class="tech-item">
-                                        <div class="tech-checkbox-wrapper">
-                                            <input type="checkbox" class="tech-checkbox" 
-                                                ${isChecked} 
-                                                onchange="window.seiryuuApp.toggleExamCheck('${uniqueId}', this.checked)">
-                                        </div>
-                                        <div class="tech-content">${tech}</div>
-                                        <div class="tech-pin-btn ${isPinned}" 
-                                            onclick="window.seiryuuApp.toggleExamPin('${uniqueId}', this)">
-                                            📌
-                                        </div>
-                                    </div>
-                                `;
-                }).join('')}
+                        <div class="tech-content">${tech}</div>
+                        <div class="tech-pin-btn ${isPinned}" 
+                            onclick="window.seiryuuApp.toggleExamPin('${uniqueId}', this)">
+                            📌
                         </div>
                     </div>
-                `;
+                 `;
             });
+
+            content += `</div>`;
         });
 
         // Inject global handlers if not present
@@ -463,51 +407,5 @@ export default class Exams {
         if (window.seiryuuApp && window.seiryuuApp.showModal) {
             window.seiryuuApp.showModal(content);
         }
-    }
-
-    groupTechniques(data) {
-        if (!Array.isArray(data)) return data; // Already grouped object
-
-        const grouped = {};
-        data.forEach(item => {
-            // Heuristic to extract Attack name
-            const words = item.split(' ');
-            let attack = words[0];
-            let technique = words.slice(1).join(' ');
-
-            const twoWordAttacks = ['Ushiro', 'Hanmi', 'Katadori', 'Tantōtori', 'Jiyūwaza', 'Ken:', 'Jo:'];
-            const startCheck = twoWordAttacks.find(p => item.startsWith(p));
-
-            if (startCheck) {
-                // If specific composite, might take more.
-                // 'Ushiro ryōtedori ...' -> Attack: Ushiro ryōtedori
-                if (words.length > 1 && !item.includes(':')) {
-                    attack = words[0] + ' ' + words[1];
-                    technique = words.slice(2).join(' ');
-                } else if (item.includes(':')) {
-                    // 'Katatetori: ikkyō...'
-                    const parts = item.split(':');
-                    attack = parts[0].trim();
-                    technique = parts[1] ? parts[1].trim() : '';
-                }
-            } else {
-                // Standard case 'Katatetori ...'
-                // Check if colon exists (e.g. 1st Kyu lines)
-                if (item.includes(':')) {
-                    const parts = item.split(':');
-                    attack = parts[0].trim();
-                    technique = parts[1] ? parts[1].trim() : '';
-                }
-            }
-
-            if (!grouped[attack]) grouped[attack] = [];
-
-            // If the original item already had the attack formatted, we might want to strip it?
-            // "Katatetori aihanmi ikkyho" -> Attack: Katatetori, Tech: aihanmi ikkyo
-            // Yes, this looks correct.
-
-            grouped[attack].push(technique || 'Variazioni');
-        });
-        return grouped;
     }
 }
